@@ -3,17 +3,17 @@ import React from 'react';
 function Footer() {
     return (
         <>
-        <div class=" bg-gray-900">
-            <div class="max-w-2xl mx-auto text-white py-10">
-                <div class="text-center">
-                    <h3 class="text-3xl mb-3"> Start your shopping spree </h3>
+        <div className=" bg-gray-900">
+            <div className="max-w-2xl mx-auto text-white py-10">
+                <div className="text-center">
+                    <h3 className="text-3xl mb-3"> Start your shopping spree </h3>
                     <p> New deals. All day, every day. </p>
-                    <div class="flex justify-center my-10">
-                        <div class="flex flex-row space-x-4">
+                    <div className="flex justify-center my-10">
+                        <div className="flex flex-row space-x-4">
                             <a href="#" 
-                               class="text-gray-400 hover:text-gray-500">
-                                <span class="sr-only">Facebook</span>
-                                <svg class="w-6 h-6" 
+                               className="text-gray-400 hover:text-gray-500">
+                                <span className="sr-only">Facebook</span>
+                                <svg className="w-6 h-6" 
                                      aria-hidden="true" 
                                      fill="currentColor" 
                                      viewBox="0 0 24 24">
@@ -24,9 +24,9 @@ function Footer() {
                                 </svg>
                             </a>
                             <a href="#" 
-                               class="text-gray-400 hover:text-gray-500">
-                                <span class="sr-only">Instagram</span>
-                                    <svg class="w-6 h-6" 
+                               className="text-gray-400 hover:text-gray-500">
+                                <span className="sr-only">Instagram</span>
+                                    <svg className="w-6 h-6" 
                                          aria-hidden="true" 
                                          fill="currentColor" 
                                          viewBox="0 0 24 24">
@@ -37,9 +37,9 @@ function Footer() {
                                     </svg>
                             </a>
                             <a href="#" 
-                               class="text-gray-400 hover:text-gray-500">
-                                <span class="sr-only">Twitter</span>
-                                    <svg class="w-6 h-6" 
+                               className="text-gray-400 hover:text-gray-500">
+                                <span className="sr-only">Twitter</span>
+                                    <svg className="w-6 h-6" 
                                          aria-hidden="true" 
                                          fill="currentColor" 
                                          viewBox="0 0 24 24">
@@ -49,12 +49,12 @@ function Footer() {
                         </div>
                     </div>
                 </div>
-                <div class="mt-28 flex flex-col md:flex-row md:justify-between items-center text-sm text-gray-400">
-                    <p class="order-2 md:order-1 mt-8 md:mt-0"> &copy; Tea Grönborg, 2022 </p>
-                    <div class="order-1 md:order-2">
-                        <span class="px-2">About us</span>
-                        <span class="px-2 border-l">Contact us</span>
-                        <span class="px-2 border-l">Privacy Policy</span>
+                <div className="mt-28 flex flex-col md:flex-row md:justify-between items-center text-sm text-gray-400">
+                    <p className="order-2 md:order-1 mt-8 md:mt-0"> &copy; Tea Grönborg, 2022 </p>
+                    <div className="order-1 md:order-2">
+                        <span className="px-2">About us</span>
+                        <span className="px-2 border-l">Contact us</span>
+                        <span className="px-2 border-l">Privacy Policy</span>
                     </div>
                 </div>
             </div>
