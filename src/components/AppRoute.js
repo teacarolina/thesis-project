@@ -5,6 +5,8 @@ import ContactForm from './contact/ContactForm';
 import Policy from './company/Policy';
 import Login from './login/Login';
 import Register from './register/Register';
+import Category from './product/Category';
+import Cart from './checkout/Cart';
 
 import {
     BrowserRouter as Router,
@@ -23,6 +25,9 @@ export default function AppRoute() {
                 <Route path='/policy' element={<Policy/>}/>
                 <Route path='/login' element={<Login/>}/>
                 <Route path='/register' element={<Register/>}/>
+                <Route path='/category' element={<Category/>}/>
+                <Route path='/checkout' element={<Cart/>}/>
+
             </Routes>
         </Router>
         </> 

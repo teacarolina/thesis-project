@@ -8,8 +8,8 @@ function Navbar() {
             <div className="container mx-auto px-6 py-3 md:flex md:justify-between md:items-center">
                 <div className="flex justify-between items-center">
                     <div>
-                        <a className="text-gray-800 text-xl font-bold md:text-2xl hover:text-gray-700" 
-                           href="#">Brand</a>
+                        <p className="text-gray-800 text-xl font-bold md:text-2xl hover:text-gray-700">
+                            <Link to="/">Brand</Link></p>
                     </div>
                     <div className="flex md:hidden">
                         <button type="button" 
@@ -27,8 +27,16 @@ function Navbar() {
                     <div className="flex flex-col md:flex-row md:mx-6">
                         <a className="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0" 
                            href="#">Link 1</a>
-                        <a className="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0" 
-                           href="#">Link 2</a>
+
+                        <div className="relative inline-flex">
+                            <select className="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">
+                                <option>Categories</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                        </div>
+                        
                         <p className="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">
                             <Link to="/about">About</Link></p>
                         <p className="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">
@@ -48,8 +56,8 @@ function Navbar() {
                                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                        </svg></Link></p></div>
                 <div className="flex justify-center md:block">
-                    <a className="relative text-gray-700 hover:text-gray-600" 
-                       href="#">
+                    <p className="relative text-gray-700 hover:text-gray-600">
+                        <Link to="/checkout">
                         <svg className="h-5 w-5" 
                              viewBox="0 0 24 24" 
                              fill="none" 
@@ -60,8 +68,11 @@ function Navbar() {
                                   stroke-linecap="round" 
                                   stroke-linejoin="round"/>
                         </svg>
+                        {/* Do I want to add this if something is in cart?
                         <span className="absolute top-0 left-0 rounded-full bg-sky-900 text-white p-1 text-xs"></span>
-                    </a>
+                        */}
+                        </Link>
+                    </p>
                 </div>
                 </div>
             </div>
