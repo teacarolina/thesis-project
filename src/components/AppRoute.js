@@ -7,6 +7,7 @@ import Login from './login/Login';
 import Register from './register/Register';
 import Category from './product/Category';
 import Cart from './checkout/Cart';
+import User from './login/User';
 
 import {
     BrowserRouter as Router,
@@ -27,6 +28,7 @@ export default function AppRoute() {
                 <Route path='/register' element={<Register/>}/>
                 <Route path='/category' element={<Category/>}/>
                 <Route path='/checkout' element={<Cart/>}/>
+                <Route path='/my-page' element={<User/>}/>
 
             </Routes>
         </Router>
