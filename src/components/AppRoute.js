@@ -8,6 +8,8 @@ import Register from './register/Register';
 import Category from './product/Category';
 import Cart from './checkout/Cart';
 import User from './login/User';
+import Shop from './product/Shop';
+import SingleProductPage from './product/SingleProductPage';
 
 import {
     BrowserRouter as Router,
@@ -29,6 +31,8 @@ export default function AppRoute() {
                 <Route path='/category' element={<Category/>}/>
                 <Route path='/checkout' element={<Cart/>}/>
                 <Route path='/my-page' element={<User/>}/>
+                <Route path='/shop' element={<Shop/>}/>
+                <Route path='/product/:id' element={<SingleProductPage/>}/>
 
             </Routes>
         </Router>
