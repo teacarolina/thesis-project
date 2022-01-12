@@ -6,9 +6,13 @@ import axios from 'axios';
 
 function SingleProductPage() {
 
+    //Using useParams to get the value of the URL parameter
     const {id} = useParams();
+
+    //Using state to save the specific product
     const [product, setProduct] = useState([]);
 
+    //Using useEffect to fetch the specific products from the API 
     useEffect( () => {
         const fetchProduct = async()=> {
             const response = await axios.get(`https://fakestoreapi.com/products/${id}`);
@@ -26,6 +30,7 @@ function SingleProductPage() {
                 <div className="md:flex items-center -mx-10">
                     <div className="w-full md:w-1/2 px-10 mb-10 md:mb-0">
                         <div className="relative">
+                            {/* Explain + add alt image texts on all images */}
                             <img src={product.image}
                                  className="w-1/2 relative z-10" 
                                  alt=""/>

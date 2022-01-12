@@ -28,12 +28,11 @@ export default function AppRoute() {
                 <Route path='/policy' element={<Policy/>}/>
                 <Route path='/login' element={<Login/>}/>
                 <Route path='/register' element={<Register/>}/>
-                <Route path='/category' element={<Category/>}/>
+                <Route path='/category/:name' element={<Category/>}/>
                 <Route path='/checkout' element={<Cart/>}/>
                 <Route path='/my-page' element={<User/>}/>
                 <Route path='/shop' element={<Shop/>}/>
                 <Route path='/product/:id' element={<SingleProductPage/>}/>
-
             </Routes>
         </Router>
         </> 

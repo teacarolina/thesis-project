@@ -32,72 +32,72 @@ function AboutUs() {
                                 and discounts.
                             </p>
                             <ul className="list-none mt-6">
-                            <li className="py-2">
-                            <div className="flex items-center">
-                                <div>
-                                    <span className="text-xs font-semibold inline-block py-1 px-1 uppercase rounded-full text-pink-600 bg-pink-200 mr-3">
-                                    <span className="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" 
-                                             className="h-5 w-5" 
-                                             viewBox="0 0 20 20" 
-                                             fill="currentColor">
-                                            <path fill-rule="evenodd" 
-                                                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" 
-                                                  clip-rule="evenodd" />
-                                        </svg>
-                                    </span>
-                                    </span>
-                                </div>
-                                <div>
-                                    <h4 className="text-blueGray-500">
-                                        Latest deals for great prices
-                                    </h4>
-                                </div>
-                            </div>
-                            </li>
-                            <li className="py-2">
+                                <li className="py-2">
                                 <div className="flex items-center">
                                     <div>
                                         <span className="text-xs font-semibold inline-block py-1 px-1 uppercase rounded-full text-pink-600 bg-pink-200 mr-3">
-                                            <span className="">
-                                                <svg xmlns="http://www.w3.org/2000/svg" 
-                                                     className="h-5 w-5" 
-                                                     viewBox="0 0 20 20" 
-                                                     fill="currentColor">
-                                                    <path fill-rule="evenodd" 
-                                                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" 
-                                                          clip-rule="evenodd" />
-                                                </svg>
-                                            </span>
+                                        <span className="">
+                                            <svg xmlns="http://www.w3.org/2000/svg" 
+                                                className="h-5 w-5" 
+                                                viewBox="0 0 20 20" 
+                                                fill="currentColor">
+                                                <path fill-rule="evenodd" 
+                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" 
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </span>
                                         </span>
                                     </div>
                                     <div>
-                                        <h4 className="text-blueGray-500">Amazing member deals</h4>
+                                        <h4 className="text-blueGray-500">
+                                            Latest deals for great prices
+                                        </h4>
                                     </div>
                                 </div>
-                            </li>
-                            <li className="py-2">
-                            <div className="flex items-center">
-                                <div>
-                                    <span className="text-xs font-semibold inline-block py-1 px-1 uppercase rounded-full text-pink-600 bg-pink-200 mr-3">
-                                    <span className="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" 
-                                             className="h-5 w-5" 
-                                             viewBox="0 0 20 20" 
-                                             fill="currentColor">
-                                            <path fill-rule="evenodd" 
-                                                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" 
-                                                  clip-rule="evenodd" />
-                                        </svg>
+                                </li>
+                                <li className="py-2">
+                                    <div className="flex items-center">
+                                        <div>
+                                            <span className="text-xs font-semibold inline-block py-1 px-1 uppercase rounded-full text-pink-600 bg-pink-200 mr-3">
+                                                <span className="">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" 
+                                                        className="h-5 w-5" 
+                                                        viewBox="0 0 20 20" 
+                                                        fill="currentColor">
+                                                        <path fill-rule="evenodd" 
+                                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" 
+                                                            clip-rule="evenodd" />
+                                                    </svg>
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <h4 className="text-blueGray-500">Amazing member deals</h4>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li className="py-2">
+                                <div className="flex items-center">
+                                    <div>
+                                        <span className="text-xs font-semibold inline-block py-1 px-1 uppercase rounded-full text-pink-600 bg-pink-200 mr-3">
+                                        <span className="">
+                                            <svg xmlns="http://www.w3.org/2000/svg" 
+                                                className="h-5 w-5" 
+                                                viewBox="0 0 20 20" 
+                                                fill="currentColor">
+                                                <path fill-rule="evenodd" 
+                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" 
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </span>
                                     </span>
-                                </span>
-                            </div>
-                                <div>
-                                    <h4 className="text-blueGray-500">Share our success</h4>
                                 </div>
-                            </div>
-                            </li>
-                        </ul>
+                                    <div>
+                                        <h4 className="text-blueGray-500">Share our success</h4>
+                                    </div>
+                                </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>

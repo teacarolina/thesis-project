@@ -1,10 +1,24 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Navbar from '../navbar/Navbar';
 import Footer from '../footer/Footer';
 import ProductCard from '../product/ProductCard';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 function Home() {
+
+    //Using state to save the featured products
+    const [featuredProducts, setFeaturedProducts] = useState([]);
+
+    //Using useEffect to fetch 3 products from the API 
+    useEffect( () => {
+        const fetchProducts = async()=> {
+            const response = await axios.get('https://fakestoreapi.com/products?limit=3');
+            setFeaturedProducts(response.data);
+        }
+        fetchProducts();
+    }, []);
+
+
     return (
         <>
         <Navbar/>
@@ -84,10 +98,17 @@ function Home() {
                 <h2 className="text-4xl font-semibold text-black">Featured Products</h2>
             </div>
             <div class="relative m-3 mt-10 flex flex-wrap mx-auto justify-center">
-                {/*Temporary to see the design*/}
-                <ProductCard/>
-                <ProductCard/>
-                <ProductCard/>
+                {/* Using map to map through the products to set the ProductCards */}
+                {featuredProducts.map((product) => {
+                    return (<ProductCard
+                        key={product.id}
+                        id={product.id}
+                        title={product.title}
+                        price={product.price}
+                        image={product.image}
+                    />
+                    )
+                })}
             </div>
         
             {/*INSTAGRAM FEED*/}

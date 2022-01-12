@@ -30,32 +30,30 @@ function User() {
                 </div>
                 <div className="col-span-1 bg-white lg:block hidden">
                     <h1 className="py-6 border-b-2 text-xl text-gray-600 px-8">My Orders</h1>
-                    <table class="border-collapse w-full">
-    <thead>
-        <tr>
-            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Order Id</th>
-            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Date</th>
-            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Total</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
-            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                12345
-            </td>
-            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
-                12-01-21
-            </td>
-            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
-                1200 SEK
-            </td>
-           
-        </tr>
-    </tbody>
-</table>
-                    </div>
-                        
-                </div>
+                    <table className="border-collapse w-full">
+                        <thead>
+                            <tr>
+                                <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Order Id</th>
+                                <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Date</th>
+                                <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr className="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+                                <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                                    12345
+                                </td>
+                                <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                                    12-01-21
+                                </td>
+                                <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                                    1200 SEK
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>        
+            </div>
                 <div className="col-span-1 bg-sky-900 lg:block hidden">
                     <h1 className="py-6 border-b-2 text-xl text-white px-8">Customer Information</h1>
                         <ul className="py-6 border-b space-y-6 px-8"> 
@@ -70,7 +68,7 @@ function User() {
                     <div className="flex justify-center">
                         <button className="flex justify-center px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none">
                             <svg xmlns="http://www.w3.org/2000/svg" 
-                                 class="h-6 w-6" 
+                                 className="h-6 w-6" 
                                  fill="none"
                                  viewBox="0 0 24 24" 
                                  stroke="currentColor">
@@ -85,7 +83,8 @@ function User() {
                     <div className="flex justify-center">
                         <button className="flex justify-center px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none">
                             <svg xmlns="http://www.w3.org/2000/svg" 
-                                 class="h-6 w-6" fill="none" 
+                                 className="h-6 w-6" 
+                                 fill="none" 
                                  viewBox="0 0 24 24" 
                                  stroke="currentColor">
                                 <path stroke-linecap="round" 

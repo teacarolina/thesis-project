@@ -6,62 +6,61 @@ function ContactForm() {
     return (
         <>
         <Navbar/>
-            <div class="relative flex items-top justify-center min-h-screen bg-white dark:bg-gray-900 sm:items-center sm:pt-0">
-                <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                    <div class="mt-8 overflow-hidden">
-                        <div class="grid grid-cols-1 md:grid-cols-2">
-                            <div class="p-6 mr-2 bg-gray-100 dark:bg-gray-800 sm:rounded-lg">
-                                <h1 class="text-4xl sm:text-5xl text-gray-800 dark:text-white font-extrabold tracking-tight">
+            <div className="relative flex items-top justify-center min-h-screen bg-white dark:bg-gray-900 sm:items-center sm:pt-0">
+                <div className="max-w-6xl mx-auto sm:px-6 lg:px-8">
+                    <div className="mt-8 overflow-hidden">
+                        <div className="grid grid-cols-1 md:grid-cols-2">
+                            <div className="p-6 mr-2 bg-gray-100 dark:bg-gray-800 sm:rounded-lg">
+                                <h1 className="text-4xl sm:text-5xl text-gray-800 dark:text-white font-extrabold tracking-tight">
                                     Contact Us
                                 </h1>
-                                <p class="text-normal text-lg sm:text-2xl font-medium text-gray-600 dark:text-gray-400 mt-2">
+                                <p className="text-normal text-lg sm:text-2xl font-medium text-gray-600 dark:text-gray-400 mt-2">
                                     Fill in the form to start a conversation
                                 </p>
-                                <div class="flex items-center mt-8 text-gray-600 dark:text-gray-400">
-                                    <div class="ml-4 text-md tracking-wide font-semibold">
+                                <div className="flex items-center mt-8 text-gray-600 dark:text-gray-400">
+                                    <div className="ml-4 text-md tracking-wide font-semibold">
                                         You can also reach our team by a phonecall or email<br/> Find your options below
                                     </div>
                                 </div>    
                             </div>
-                            
-                            <form class="p-6 flex flex-col justify-center">
-                                <div class="flex flex-col">
+                            <form className="p-6 flex flex-col justify-center">
+                                {/* Input: Full Name */}
+                                <div className="flex flex-col">
                                     <label for="name" 
-                                           class="hidden">Full Name</label>
+                                           className="hidden">Full Name</label>
                                     <input type="name" 
                                            name="name" 
                                            id="name" 
                                            placeholder="Full Name" 
-                                           class="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"/>
+                                           className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"/>
                                 </div>
-
-                                <div class="flex flex-col mt-2">
+                                {/* Input: Email */}
+                                <div className="flex flex-col mt-2">
                                     <label for="email" 
-                                           class="hidden">Email</label>
+                                           className="hidden">Email</label>
                                     <input type="email" 
                                            name="email" 
                                            id="email" 
                                            placeholder="Email" 
-                                           class="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"/>
+                                           className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"/>
                                 </div>
-
-                                <div class="flex flex-col mt-2">
+                                {/* Input: Message */}
+                                <div className="flex flex-col mt-2">
                                     <label for="message" 
-                                           class="hidden">Message</label>
+                                           className="hidden">Message</label>
                                     <input type="text" 
                                            name="message" 
                                            id="message" 
                                            placeholder="Message" 
-                                           class="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"/>
+                                           className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"/>
                                 </div>
-
+                                {/* Submit Form */}
                                 <button type="submit" 
-                                        class="md:w-32 bg-indigo-600 hover:bg-blue-dark text-white font-bold py-3 px-6 rounded-lg mt-3 hover:bg-indigo-500 transition ease-in-out duration-300">
+                                        className="md:w-32 bg-indigo-600 hover:bg-blue-dark text-white font-bold py-3 px-6 rounded-lg mt-3 hover:bg-indigo-500 transition ease-in-out duration-300">
                                     Send
                                 </button>
                             </form>
                         </div>
-                  
                         {/* Section with 3 boxes  */}   
                         <div className="flex flex-wrap mt-12 justify-center">
                             <div className="w-full lg:w-3/12 px-4 text-center">
@@ -72,7 +71,7 @@ function ContactForm() {
                                          stroke-linejoin="round" 
                                          stroke-width="1.5" 
                                          viewBox="0 0 24 24" 
-                                         class="w-8 h-8 text-gray-500">
+                                         className="w-8 h-8 text-gray-500">
                                         <path stroke-linecap="round" 
                                               stroke-linejoin="round" 
                                               stroke-width="1.5" 
@@ -99,7 +98,7 @@ function ContactForm() {
                                          stroke-linejoin="round" 
                                          stroke-width="1.5" 
                                          viewBox="0 0 24 24" 
-                                        class="w-8 h-8 text-gray-500">
+                                        className="w-8 h-8 text-gray-500">
                                         <path stroke-linecap="round" 
                                               stroke-linejoin="round" 
                                               stroke-width="1.5" 
@@ -121,7 +120,7 @@ function ContactForm() {
                                          stroke-linejoin="round" 
                                          stroke-width="1.5" 
                                          viewBox="0 0 24 24" 
-                                         class="w-8 h-8 text-gray-500">
+                                         className="w-8 h-8 text-gray-500">
                                         <path stroke-linecap="round" 
                                               stroke-linejoin="round" 
                                               stroke-width="1.5" 

@@ -11,6 +11,7 @@ function Footer() {
                     <p> New deals. All day, every day. </p>
                     <div className="flex justify-center my-10">
                         <div className="flex flex-row space-x-4">
+                            {/* Change to a Link */}
                             <a href="#" 
                                className="text-gray-400 hover:text-gray-500">
                                 <span className="sr-only">Facebook</span>
@@ -24,6 +25,7 @@ function Footer() {
                                     </path>
                                 </svg>
                             </a>
+                            {/* Change to a Link */}
                             <a href="#" 
                                className="text-gray-400 hover:text-gray-500">
                                 <span className="sr-only">Instagram</span>
@@ -37,6 +39,7 @@ function Footer() {
                                         </path>
                                     </svg>
                             </a>
+                            {/* Change to a Link */}
                             <a href="#" 
                                className="text-gray-400 hover:text-gray-500">
                                 <span className="sr-only">Twitter</span>
