@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function ProductCard({ id, title, price, image }) {
     return (
         <>
-          <div className="relative max-w-sm min-w-[340px] bg-white shadow-md rounded-3xl p-2 mx-1 my-3 cursor-pointer">
+          <div className="relative max-w-[340px] min-w-[340px] max-h-[280px] min-h-[280px] bg-white shadow-md rounded-3xl p-2 mx-1 my-3 cursor-pointer">
             <div className="overflow-x-hidden rounded-2xl relative">
               <img className="h-40 rounded-2xl w-full object-cover" 
                    src={image}/>
@@ -21,20 +21,25 @@ function ProductCard({ id, title, price, image }) {
                 </svg>
               </button>
             </div>
-            <div className="mt-4 pl-2 mb-2 flex justify-between">
+            
+            <div className="mt-4 pl-2 mb-2">
+            <div class="flex items-center justify-between">
+                  <div class="text-sm text-gray-600 font-light">
+                    Rating
+                  </div>
+                  <div class="text-2xl text-red-600 font-bold">
+                    ${price}
+                  </div>
+                </div>
               <div>
-                <p className="text-lg font-semibold text-gray-900 hover:text-sky-700 mb-0">
+                <p className="text-sm font-semibold text-gray-900 hover:text-sky-700 mb-0">
                   {/* Adding the id to the link to be able to specify the product for Single Product Page */}
                   <Link to={`/product/${id}`}>{title}</Link>
                 </p>
-                <p className="text-md text-gray-800 mt-0">${price}</p>
-              </div>
-              <div className="flex flex-col-reverse mb-1 mr-4 group cursor-pointer">
-                {/* What should I have here? */}
-                <p className="text-md text-gray-800 mt-0">?</p>
               </div>
             </div>
           </div>  
+          
         </>
     )
 }

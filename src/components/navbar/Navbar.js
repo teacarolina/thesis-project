@@ -9,7 +9,7 @@ function Navbar() {
                 <div className="flex justify-between items-center">
                     <div>
                         <p className="text-gray-800 text-xl font-bold md:text-2xl hover:text-gray-700">
-                            <Link to="/">Brand</Link></p>
+                            <Link to="/">Deal.se</Link></p>
                     </div>
                     <div className="flex md:hidden">
                         <button type="button" 
@@ -25,12 +25,12 @@ function Navbar() {
                 </div>
                 <div className="md:flex items-center">
                     <div className="flex flex-col md:flex-row md:mx-6">
-                        <p className="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">
+                        <p className="my-1 text-sm text-gray-700 font-medium hover:text-sky-500 md:mx-4 md:my-0.5">
                             <Link to="/shop">Shop</Link></p>
                         {/* Dropdown Menu */}
                         <div className="relative inline-block text-left dropdown">
-                            <span className="rounded-md shadow-sm">
-                                <button className="inline-flex justify-center w-full px-4 text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out rounded-md hover:text-gray-500 focus:outline-none active:text-gray-800" 
+                            <span className="rounded-md ">
+                                <button className="inline-flex justify-center w-full px-4 text-sm font-medium text-gray-700 transition duration-150 ease-in-out rounded-md hover:text-sky-500 focus:outline-none active:text-gray-800" 
                                         type="button" 
                                         aria-haspopup="true" 
                                         aria-expanded="true" 
@@ -40,31 +40,47 @@ function Navbar() {
                                          viewBox="0 0 20 20" 
                                          fill="currentColor">
                                              <path fill-rule="evenodd" 
-                                                   d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd">
+                                                   d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" 
+                                                   clip-rule="evenodd">
                                              </path>
                                     </svg>
                                 </button>
                             </span>
-                            <div className="opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95">
+                            <div className="opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95 z-999">
                                 <div className="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none" aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                                     <div className="py-1">
-                                        <p tabindex="0" className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" role="menuitem"><Link to={`/category/electronics`}>Electronics</Link></p>
-                                        <p tabindex="1" className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" role="menuitem"><Link to={`/category/jewelery`}>Jewelery</Link></p>
-                                        {/* Can I make a helper function to separate the two word categories?*/}
-                                        <p tabindex="2" className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" role="menuitem"><Link to={`/category/men's-clothing`}>Men's clothing</Link></p>
-                                        <p tabindex="3" className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" role="menuitem"><Link to={`/category/women's-clothing`}>Women's clothing</Link></p>
+                                        <p tabindex="0" 
+                                           className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" 
+                                           role="menuitem">
+                                            <Link to={`/category/electronics`}>Electronics</Link>
+                                        </p>
+                                        <p tabindex="1" 
+                                           className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" 
+                                           role="menuitem">
+                                            <Link to={`/category/jewelery`}>Jewelery</Link>
+                                        </p>
+                                        <p tabindex="2" 
+                                           className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" 
+                                           role="menuitem">
+                                            <Link to={`/category/men's-clothing`}>Men's clothing</Link>
+                                        </p>
+                                        <p tabindex="3" 
+                                           className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" 
+                                           role="menuitem">
+                                            <Link to={`/category/women's-clothing`}>Women's clothing</Link>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         {/* End of Dropdown Menu */}
-                        <p className="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">
+                        <p className="my-1 text-sm text-gray-700 font-medium hover:text-sky-500 md:mx-4 md:my-0.5">
                             <Link to="/about">About</Link></p>
-                        <p className="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">
+                        <p className="my-1 text-sm text-gray-700 font-medium hover:text-sky-500 md:mx-4 md:my-0.5">
                             <Link to="/contact">Contact</Link></p>
                     </div>
                     <div className="flex justify-center md:block">
-                        <p className="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">
+                        <p className="my-1 text-sm text-gray-700 font-medium hover:text-sky-500 md:mx-4 md:my-0">
                             <Link to="/login">
                                 <svg className="h-5" 
                                     xmlns="http://www.w3.org/2000/svg" 
@@ -80,7 +96,7 @@ function Navbar() {
                         </p>
                     </div>
                     <div className="flex justify-center md:block">
-                        <p className="relative text-gray-700 hover:text-gray-600">
+                        <p className="relative text-gray-700 hover:text-sky-500">
                             <Link to="/checkout">
                             <svg className="h-5 w-5" 
                                 viewBox="0 0 24 24" 

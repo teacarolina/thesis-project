@@ -1,11 +1,17 @@
 import React from 'react';
 import Navbar from '../navbar/Navbar';
 import Footer from '../footer/Footer';
+import Header from '../header/Header';
 
 function AboutUs() {
     return (
         <>
-        <Navbar/>        
+        <Navbar/> 
+            <Header
+            text1="Our journey to find"
+            text2="the best deals"
+            text3="Deal.se strive to be the best online store for deals."
+            />       
             <section className="relative pt-12 bg-blueGray-50">
                 <div className="items-center flex flex-wrap">
                     <div className="w-full md:w-4/12 ml-auto mr-auto px-4">
@@ -15,7 +21,7 @@ function AboutUs() {
                     </div>
                     <div className="w-full md:w-5/12 ml-auto mr-auto px-4">
                         <div className="md:pr-12">
-                            <div className="text-pink-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-pink-300 mt-8">
+                            <div className="text-black p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white mt-8">
                                 <span className="">
                                     <svg xmlns="http://www.w3.org/2000/svg" 
                                          className="h-5 w-5" 
@@ -35,15 +41,15 @@ function AboutUs() {
                                 <li className="py-2">
                                 <div className="flex items-center">
                                     <div>
-                                        <span className="text-xs font-semibold inline-block py-1 px-1 uppercase rounded-full text-pink-600 bg-pink-200 mr-3">
+                                        <span className="shadow-lg text-xs font-semibold inline-block py-1 px-1 uppercase rounded-full text-black bg-white mr-3">
                                         <span className="">
                                             <svg xmlns="http://www.w3.org/2000/svg" 
-                                                className="h-5 w-5" 
-                                                viewBox="0 0 20 20" 
-                                                fill="currentColor">
+                                                 className="h-5 w-5" 
+                                                 viewBox="0 0 20 20" 
+                                                 fill="currentColor">
                                                 <path fill-rule="evenodd" 
-                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" 
-                                                    clip-rule="evenodd" />
+                                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" 
+                                                      clip-rule="evenodd" />
                                             </svg>
                                         </span>
                                         </span>
@@ -58,7 +64,7 @@ function AboutUs() {
                                 <li className="py-2">
                                     <div className="flex items-center">
                                         <div>
-                                            <span className="text-xs font-semibold inline-block py-1 px-1 uppercase rounded-full text-pink-600 bg-pink-200 mr-3">
+                                            <span className="shadow-lg text-xs font-semibold inline-block py-1 px-1 uppercase rounded-full text-black bg-white mr-3">
                                                 <span className="">
                                                     <svg xmlns="http://www.w3.org/2000/svg" 
                                                         className="h-5 w-5" 
@@ -79,7 +85,7 @@ function AboutUs() {
                                 <li className="py-2">
                                 <div className="flex items-center">
                                     <div>
-                                        <span className="text-xs font-semibold inline-block py-1 px-1 uppercase rounded-full text-pink-600 bg-pink-200 mr-3">
+                                        <span className="shadow-lg text-xs font-semibold inline-block py-1 px-1 uppercase rounded-full text-black bg-white mr-3">
                                         <span className="">
                                             <svg xmlns="http://www.w3.org/2000/svg" 
                                                 className="h-5 w-5" 
@@ -102,6 +108,69 @@ function AboutUs() {
                     </div>
                 </div>
             </section>  
+            <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
+    <div class="text-center pb-12">
+        <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900">
+            Meet our fantastic deal team
+        </h1>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="w-full bg-sky-900 rounded-lg p-12 flex flex-col justify-center items-center">
+            <div class="mb-8">
+                <img class="object-center object-cover rounded-full h-36 w-36" src="https://cdn.pixabay.com/photo/2014/11/21/12/13/man-540500_1280.jpg" alt=""/>
+            </div>
+            <div class="text-center">
+                <p class="text-xl text-white font-bold mb-2">Nicholas Jones</p>
+                <p class="text-base text-white font-normal">CTO</p>
+            </div>
+        </div>
+        <div class="w-full bg-sky-900 rounded-lg p-12 flex flex-col justify-center items-center">
+            <div class="mb-8">
+                <img class="object-center object-cover rounded-full h-36 w-36" src="https://cdn.pixabay.com/photo/2017/06/01/00/44/smiling-2362136_1280.jpg" alt="photo"/>
+            </div>
+            <div class="text-center">
+                <p class="text-xl text-white font-bold mb-2">Kaitlyn Long</p>
+                <p class="text-base text-white font-normal">Customer Service Manager</p>
+            </div>
+        </div>
+        <div class="w-full bg-sky-900 rounded-lg p-12 flex flex-col justify-center items-center">
+            <div class="mb-8">
+                <img class="object-center object-cover rounded-full h-36 w-36" src="https://cdn.pixabay.com/photo/2021/03/10/16/39/woman-6084994_1280.jpg" alt="photo"/>
+            </div>
+            <div class="text-center">
+                <p class="text-xl text-white font-bold mb-2">Rosemary Webb</p>
+                <p class="text-base text-white font-normal">Founder & CEO</p>
+            </div>
+        </div>
+        <div class="w-full bg-sky-900 rounded-lg p-12 flex flex-col justify-center items-center">
+            <div class="mb-8">
+                <img class="object-center object-cover rounded-full h-36 w-36" src="https://cdn.pixabay.com/photo/2015/09/12/11/39/employees-936804_1280.jpg    " alt="photo"/>
+            </div>
+            <div class="text-center">
+                <p class="text-xl text-white font-bold mb-2">Tommy Carter</p>
+                <p class="text-base text-white font-normal">Finance Manager</p>
+            </div>
+        </div>
+        <div class="w-full bg-sky-900 rounded-lg p-12 flex flex-col justify-center items-center">
+            <div class="mb-8">
+                <img class="object-center object-cover rounded-full h-36 w-36" src="https://cdn.pixabay.com/photo/2016/11/29/09/38/adult-1868750_1280.jpg" alt="photo"/>
+            </div>
+            <div class="text-center">
+                <p class="text-xl text-white font-bold mb-2">Bradley Turner</p>
+                <p class="text-base text-white font-normal">Sales Manager</p>
+            </div>
+        </div>
+        <div class="w-full bg-sky-900 rounded-lg p-12 flex flex-col justify-center items-center">
+            <div class="mb-8">
+                <img class="object-center object-cover rounded-full h-36 w-36" src="https://cdn.pixabay.com/photo/2016/06/06/17/05/woman-1439909_1280.jpg" alt="photo"/>
+            </div>
+            <div class="text-center">
+                <p class="text-xl text-white font-bold mb-2">Isabelle Ward</p>
+                <p class="text-base text-white font-normal">Marketing Manager</p>
+            </div>
+        </div>
+    </div>
+</section>
         <Footer/>
         </>
     )

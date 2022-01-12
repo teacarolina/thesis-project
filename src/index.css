@@ -21,3 +21,7 @@ code {
   transform: translate(0) scale(1);
   visibility: visible;
 }
+
+.dropdown {
+  z-index: 9999;
+}

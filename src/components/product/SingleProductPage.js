@@ -48,7 +48,8 @@ function SingleProductPage() {
                                 <span className="font-bold text-5xl leading-none align-baseline">{product.price}</span>
                             </div>
                             <div className="inline-block align-bottom">
-                                <button className="bg-sky-900 opacity-75 hover:opacity-100 text-white hover:text-gray-900 rounded-full px-10 py-2 font-semibold">
+                                <button className="bg-sky-900 opacity-75 hover:opacity-100 text-white hover:text-white rounded-full px-10 py-2 font-semibold">
+                                    {/* Add icon? */}
                                     <i className="mdi mdi-cart -ml-2 mr-2"></i> BUY NOW
                                 </button>
                             </div>

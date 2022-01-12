@@ -3,6 +3,7 @@ import Navbar from '../navbar/Navbar';
 import Footer from '../footer/Footer';
 import ProductCard from '../product/ProductCard';
 import axios from 'axios';
+import Header from '../header/Header';
 
 function Home() {
 
@@ -22,16 +23,10 @@ function Home() {
     return (
         <>
         <Navbar/>
-            {/* Header section */}
-            <div className="container mx-auto bg-sky-900 h-96 rounded-md flex items-center">
-                <div className="sm:ml-20 text-gray-50 text-center sm:text-left">
-                    <h1 className="text-5xl font-bold mb-4">
-                        All new trendy styles <br />
-                        for everyday.
-                    </h1>
-                    <p className="text-lg inline-block sm:block">The main online store for the best deals.</p>
-                </div>
-            </div>        
+            <Header
+            text1="All new top deals for"
+            text2="everyday life."
+            text3="The online store with the best deals."/>    
             {/* Section with 3 boxes  */}   
             <div className="flex flex-wrap mt-12 justify-center">
                 <div className="w-full lg:w-3/12 px-4 text-center">
