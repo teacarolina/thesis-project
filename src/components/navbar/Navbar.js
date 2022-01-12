@@ -50,9 +50,9 @@ function Navbar() {
                                     <div className="py-1">
                                         <p tabindex="0" className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" role="menuitem"><Link to={`/category/electronics`}>Electronics</Link></p>
                                         <p tabindex="1" className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" role="menuitem"><Link to={`/category/jewelery`}>Jewelery</Link></p>
-                                        {/* Can I make a helper function to separate the two word categories?
+                                        {/* Can I make a helper function to separate the two word categories?*/}
                                         <p tabindex="2" className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" role="menuitem"><Link to={`/category/men's-clothing`}>Men's clothing</Link></p>
-                                        <p tabindex="3" className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" role="menuitem"><Link to={`/category/women's-clothing`}>Women's clothing</Link></p> */}
+                                        <p tabindex="3" className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" role="menuitem"><Link to={`/category/women's-clothing`}>Women's clothing</Link></p>
                                     </div>
                                 </div>
                             </div>
