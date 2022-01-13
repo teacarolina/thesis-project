@@ -5,12 +5,13 @@ function Login() {
     return (
         <>
         <div className="h-screen md:flex">
-          <div className="relative overflow-hidden md:flex w-1/2 bg-gradient-to-tr from-blue-800 to-purple-700 i justify-around items-center hidden">
+          <div className="relative overflow-hidden md:flex w-1/2 bg-gradient-to-tr from-sky-900 to-sky-700 i justify-around items-center hidden">
               <div>
-                  <h1 className="text-white font-bold text-4xl font-sans">Brand</h1>
-                  <p className="text-white mt-1">The most popular online website for shopping</p>
+                  <h1 className="text-white font-bold text-4xl font-sans">Deal.se</h1>
+                  <p className="text-white mt-1">The most popular online website for shopping deals</p>
+                  {/* Add link to about page? Or home page? */}
                   <button type="submit" 
-                          className="block w-28 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2">
+                          className="block w-28 bg-white text-sky-900 mt-4 py-2 rounded-2xl font-bold mb-2">
                               Read More
                   </button>
               </div>
@@ -73,8 +74,8 @@ function Login() {
                   </div>
                   {/* Submit Form */}
                   <button type="submit" 
-                          className="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2">Login</button>
-                      <span className="text-sm ml-2 hover:text-blue-500 cursor-pointer"><Link to="/register">No account yet ?</Link></span>
+                          className="block w-full bg-sky-900 opacity-75 hover:opacity-100 text-white hover:text-white mt-4 py-2 rounded-2xl font-semibold mb-2">Login</button>
+                      <span className="text-sm ml-2 hover:text-sky-500 cursor-pointer"><Link to="/register">No account yet ?</Link></span>
               </form>
           </div>
       </div>  
