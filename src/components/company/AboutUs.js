@@ -99,7 +99,7 @@ function AboutUs() {
                                     </span>
                                 </div>
                                     <div>
-                                        <h4 className="text-blueGray-500">Share our success</h4>
+                                        <h4 className="text-blueGray-500">Aiming to be the number one store for deals</h4>
                                     </div>
                                 </div>
                                 </li>

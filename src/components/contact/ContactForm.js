@@ -110,14 +110,14 @@ function ContactForm() {
                         <div className="max-w-6xl mx-auto sm:px-6 lg:px-8">
                             <div className="mt-8 overflow-hidden">
                                 <div className="grid grid-cols-1 md:grid-cols-2">
-                                    <div className="p-6 mr-2 bg-sky-50 dark:bg-gray-800 sm:rounded-lg">
-                                        <h1 className="text-4xl sm:text-5xl text-gray-800 dark:text-white font-extrabold tracking-tight">
+                                    <div className="p-6 mr-2 bg-sky-900 dark:bg-gray-800 sm:rounded-lg">
+                                        <h1 className="text-4xl sm:text-5xl text-white dark:text-white font-extrabold tracking-tight">
                                             Contact Us
                                         </h1>
-                                        <p className="text-normal text-lg sm:text-2xl font-medium text-gray-600 dark:text-gray-400 mt-2">
+                                        <p className="text-normal text-lg sm:text-2xl font-medium text-white dark:text-gray-400 mt-2">
                                             Fill in the form to start a conversation <br/> or reach us by phone and email
                                         </p>
-                                        <div className="flex items-center mt-8 text-gray-600 dark:text-gray-400">
+                                        <div className="flex items-center mt-8 text-white dark:text-gray-400">
                                             <div className="ml-4 text-md tracking-wide font-semibold">
                                                 <b>Customer Service<br/>Opening hours</b><br/> Weekdays 9am-5pm <br/> Weekends 10am-4pm
                                             </div>

@@ -11,6 +11,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore/lite';
 //import {getFirestore} from '@firebase/firestore';
+//import { getAuth } from "firebase/auth";
 
 //import { collection, doc, setDoc } from "firebase/firestore";
 //uninstall dotenv?
@@ -34,7 +35,7 @@ const firebaseConfig = {
 
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
-
+//const auth = getAuth(firebaseApp);
 export default db;
 
 // Initialize Firebase
