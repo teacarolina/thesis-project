@@ -1,8 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Navbar from '../navbar/Navbar';
 import Footer from '../footer/Footer';
+//check all of these imports and remove non used
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 
 function User() {
+
+    //to get current logged in user
+    const authentication = getAuth();
+
+    //to set a state which contains the current logged in user
+    const [user, setUser] = useState({});
+    onAuthStateChanged(authentication, (currentUser) => {
+      setUser(currentUser);
+      //display name and phonenumber to add to input fields when editing customer?
+      console.log(currentUser);
+    });
+
+    //log out function, signOut is from firebase auth 
+    const logout = async () => {
+      const authentication = getAuth(); 
+      await signOut(authentication);
+      //add redirect to function so when logging out you are sent to login page or home?
+    }
+
     return (
         <>
         <Navbar/>
@@ -55,13 +76,14 @@ function User() {
                 </div>        
             </div>
                 <div className="col-span-1 bg-sky-900 lg:block hidden">
-                    <h1 className="py-6 border-b-2 text-xl text-white px-8">Customer Information</h1>
+                    <h1 className="py-6 border-b-2 text-xl text-white px-8">My Information</h1>
                         <ul className="py-6 border-b space-y-6 px-8"> 
                             <div className="col-span-1 self-center">
                                 <span className="text-white text-md font-semi-bold">Customer Name</span>
                             </div>
                             <div className="col-span-1 self-center">
-                                <span className="text-white text-md font-semi-bold">Customer Address</span>
+                                <span className="text-white text-sm font-bold">Email Address</span><br/>
+                                <span className="text-white text-md font-semi-bold">{user?.email}</span>
                             </div>            
                         </ul>
                     <span className="text-gray-400 text-sm inline-block pt-2">Below you can update your information or delete your user</span>
@@ -93,6 +115,12 @@ function User() {
                                       d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                             </svg>
                             <span className="ml-2 mt-5px">Delete</span>
+                        </button>
+                    </div>
+                    <div className="flex justify-center">
+                        <button className="flex justify-center px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none"
+                                onClick={logout}>
+                            <span className="ml-2 mt-5px">Log Out</span>
                         </button>
                     </div>
                 </div>

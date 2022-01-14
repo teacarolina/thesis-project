@@ -1,7 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 
 function Navbar() {
+
+    //to get current logged in user
+    const authentication = getAuth();
+
+    //to set a state which contains the current logged in user
+    const [user, setUser] = useState({});
+    onAuthStateChanged(authentication, (currentUser) => {
+      setUser(currentUser);
+    });
+    //this is written in return {user.email} or {user?.email}
+    //? sets it to if user exists write it out otherwise don't to avoid errors
+
     return (
         <>
         <nav className="bg-white shadow">
@@ -79,6 +92,7 @@ function Navbar() {
                         <p className="my-1 text-sm text-gray-700 font-medium hover:text-sky-500 md:mx-4 md:my-0.5">
                             <Link to="/contact">Contact</Link></p>
                     </div>
+                    {user === null ? 
                     <div className="flex justify-center md:block">
                         <p className="my-1 text-sm text-gray-700 font-medium hover:text-sky-500 md:mx-4 md:my-0">
                             <Link to="/login">
@@ -95,6 +109,23 @@ function Navbar() {
                             </Link>
                         </p>
                     </div>
+                    : <div className="flex justify-center md:block">
+                        <p className="my-1 text-sm text-gray-700 font-medium hover:text-sky-500 md:mx-4 md:my-0">
+                            <Link to="/my-page">
+                                <svg className="h-5" 
+                                    xmlns="http://www.w3.org/2000/svg" 
+                                    fill="none" 
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                <path stroke-linecap="round" 
+                                        stroke-linejoin="round" 
+                                        stroke-width="2"
+                                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                </svg>
+                            </Link>
+                        </p>
+                     </div>
+                }
                     <div className="flex justify-center md:block">
                         <p className="relative text-gray-700 hover:text-sky-500">
                             <Link to="/checkout">

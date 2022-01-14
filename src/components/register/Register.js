@@ -10,6 +10,7 @@ function Register() {
 
     //Explain + add password security and email validation + check if same email is registered
     
+    //add to firebase without authentication for other tables such as cart
     //const [newName, setNewName] = useState("");
     //const [newAddress, setNewAddress] = useState("");
     //const [newEmail, setNewEmail] = useState("");
