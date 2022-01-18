@@ -1,8 +1,21 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
+import { collection, addDoc, doc, getDocs } from 'firebase/firestore/lite';
+import db from '../../FirebaseConfig';
 
 function Login() {
+
+    //to get the cart collection from the db
+    const cartCollectionRef = collection(db, 'carts');
+
+    //function to create cart
+    const createCart = async () => {
+        const authentication = getAuth();
+        const user = authentication.currentUser;
+        const thisUserId = user.uid;
+        await addDoc(cartCollectionRef, {userId: thisUserId});
+    }
 
     const navigate = useNavigate();
 
@@ -20,7 +33,7 @@ function Login() {
             loginEmail, 
             loginPassword
             );
-            console.log(user);
+            createCart();
             navigate("/")
         } catch (error) {
             console.log(error.message);
@@ -87,7 +100,8 @@ function Login() {
                                 setLoginPassword(event.target.value);
                             }} />
                   </div>
-                  {/* Submit Form */}
+                  {/* Submit Form 
+                  Move this to outside of form for error messages */}
                   <button type="submit" 
                           onClick={loginUser}
                           className="block w-full bg-sky-900 opacity-75 hover:opacity-100 text-white hover:text-white mt-4 py-2 rounded-2xl font-semibold mb-2">Login</button>

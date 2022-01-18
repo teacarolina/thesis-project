@@ -1,12 +1,23 @@
 import React, {useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import db from '../../FirebaseConfig';
-//import { collection, addDoc } from 'firebase/firestore/lite';
+import { collection, addDoc } from 'firebase/firestore/lite';
 //import auth from '../../FirebaseConfig';
 
 import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 
 function Register() {
+
+    //to get the cart collection from the db
+    const cartCollectionRef = collection(db, 'carts');
+
+    //function to create cart
+    const createCart = async () => {
+        const authentication = getAuth();
+        const user = authentication.currentUser;
+        const thisUserId = user.uid;
+        await addDoc(cartCollectionRef, {userId: thisUserId});
+    }
 
     const navigate = useNavigate();
 
@@ -60,7 +71,7 @@ function Register() {
             registerEmail, 
             registerPassword
             )
-            console.log(user);
+            createCart();
             navigate("/");
         } catch (error) {
             console.log(error.message);

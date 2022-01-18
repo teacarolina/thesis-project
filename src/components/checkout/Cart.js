@@ -1,8 +1,55 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Navbar from '../navbar/Navbar';
 import Footer from '../footer/Footer';
+import { collection, addDoc, doc, getDocs } from 'firebase/firestore/lite';
+import db from '../../FirebaseConfig';
+import axios from 'axios';
 
 function Cart() {
+
+    const [cartItems, setCartItems] = useState([])
+
+    //to get the cart items collection from the db
+    /* const cartItemsCollectionRef = collection(db, 'cartItems');
+
+    useEffect(() => {
+        
+        //???????????????
+        const cart = async()=>{
+            
+            const data = await getDocs(cartItemsCollectionRef);
+            setCartItems(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+        }
+
+        cart();
+        console.log(cartItems)
+        
+    }, []) */
+
+    //Using state to save the specific product
+    const [products, setProducts] = useState([]);
+
+    //testing for now
+    const ids = [[1],[2],[3]]
+
+    //Using useEffect to fetch the specific products from the API 
+    useEffect( () => {
+        //hämtar inte alltid alla id??
+        const fetchProducts = async()=> {
+            ids.map(async(id) => {
+                const details = await axios.get(`https://fakestoreapi.com/products/${id}`);
+                setProducts([...products, details])
+            })
+            //console.log(response.data);     
+            //await setProducts(response.data);
+            //const reply = await Promise.all(response)
+            //console.log(reply)
+        }
+        fetchProducts();
+    }, [])
+    
+    console.log(products)
+
     return (
         <>
         <Navbar/>
@@ -32,14 +79,15 @@ function Cart() {
                     <h1 className="py-6 border-b-2 text-xl text-gray-600 px-8">Your Cart</h1>
                         <ul className="py-6 border-b space-y-6 px-8">
                             <li className="grid grid-cols-6 gap-2 border-b-1">
+                                {products.map((product) => {
+                                    return (<>
                                 <div className="col-span-1 self-center">
-                                    <img src="https://bit.ly/3oW8yej" 
-                                         alt="Product" 
+                                    <img src={product.data.image} 
+                                         alt="Product"   
                                          className="rounded w-full"/>
                                 </div>
                                 <div className="flex flex-col col-span-3 pt-2">
-                                    <span className="text-gray-600 text-md font-semi-bold">Studio 2 Headphone</span>
-                                    <span className="text-gray-400 text-sm inline-block pt-2">Red Headphone</span>
+                                    <span className="text-gray-600 text-md font-semi-bold">{product.data.title}</span>
                                 </div>
                                 <div className="col-span-2 pt-3">
                                     <div className="flex items-center space-x-2 text-sm justify-between">
@@ -51,7 +99,7 @@ function Cart() {
                                                        className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black" />
                                             </div>
                                         </div>
-                                        <span className="text-green-400 font-semibold inline-block">61.98 SEK</span>
+                                        <span className="text-green-400 font-semibold inline-block">${product.data.price}</span>
                                         <button>
                                             <svg className="w-4 h-4" 
                                                  fill="none" 
@@ -67,6 +115,9 @@ function Cart() {
                                         </button>
                                     </div>
                                 </div>
+                                </>
+                                )
+                            })}
                             </li>
                         </ul>
                     </div>

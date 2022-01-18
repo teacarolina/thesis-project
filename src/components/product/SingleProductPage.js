@@ -3,11 +3,26 @@ import Navbar from '../navbar/Navbar';
 import Footer from '../footer/Footer';
 import {useParams, useNavigate} from 'react-router-dom';
 import axios from 'axios';
-import { collection, addDoc } from 'firebase/firestore/lite';
+import { collection, addDoc, doc, getDocs } from 'firebase/firestore/lite';
 import db from '../../FirebaseConfig';
 import { getAuth } from "firebase/auth";
 
 function SingleProductPage() {
+
+    const [carts, setCarts] = useState([])
+
+    useEffect(() => {
+        
+        const carts = async()=>{
+            
+            const data = await getDocs(cartCollectionRef);
+            setCarts(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+        }
+
+        carts()
+    }, [])
+
+    console.log("carts", carts)
 
     const navigate = useNavigate();
 
@@ -29,7 +44,8 @@ function SingleProductPage() {
 
     //to get the cart collection from the db
     const cartCollectionRef = collection(db, 'carts');
-
+    const cartItemsCollectionRef = collection(db, 'cartItems');
+  
     //function to add product to cart
     const addToCart = async () => {
         const authentication = getAuth();
@@ -37,9 +53,15 @@ function SingleProductPage() {
         if(!user) {
             navigate("/login");
         } else {
-        const thisProductId = Number({id}.id);
-        await addDoc(cartCollectionRef, {productId: thisProductId});
+            //????????????????????????????
+            //this cart id where user id is?
+            const thisCartId = carts[0].id;
+            console.log(thisCartId)
+            const thisProductId = Number({id}.id);
+            await addDoc(cartItemsCollectionRef, {productId: thisProductId, cartId: thisCartId});
     }}
+
+    
 
     return (
         <>
