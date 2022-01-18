@@ -51,9 +51,9 @@ function User() {
                                  fill="none" 
                                  viewBox="0 0 24 24" 
                                  stroke="currentColor">
-                            <path stroke-linecap="round" 
-                                  stroke-linejoin="round" 
-                                  stroke-width="2" 
+                            <path strokeLinecap="round" 
+                                  strokeLinejoin="round" 
+                                  strokeWidth="2" 
                                   d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                         </div>
@@ -93,77 +93,69 @@ function User() {
                     <h1 className="py-6 border-b-2 text-xl text-white px-8">My Information</h1>
                         <ul className="py-6 border-b space-y-6 px-8"> 
                             <div className="col-span-1 self-center">
-                                          {/* Dropdown Menu */}
-                        <div className="relative inline-block text-left dropdown">
-                            <span className="rounded-md ">
-                                <button className="inline-flex justify-center w-full px-4 text-sm font-medium text-white transition duration-150 ease-in-out rounded-md hover:text-sky-500 focus:outline-none active:text-gray-800" 
-                                        type="button" 
-                                        aria-haspopup="true" 
-                                        aria-expanded="true" 
-                                        aria-controls="headlessui-menu-items-117">
-                                    <span>Customer Name</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" 
-                                 className="h-6 w-6" 
-                                 fill="none"
-                                 viewBox="0 0 24 24" 
-                                 stroke="currentColor">
-                                <path stroke-linecap="round" 
-                                      stroke-linejoin="round" 
-                                      stroke-width="2" 
-                                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                            </svg>
-                                </button>
-                            </span>
-                            <div className="opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95 z-999">
-                                <div className="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none" aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
-                                    <div className="py-1">
-                                        <p tabindex="0" 
-                                           className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" 
-                                           role="menuitem">
-                                            {/* Input: Email Address */}
-						<input className="pl-2 outline-none border-none"
-                               type="text" 
-                               name="" 
-                               id="" 
-                               placeholder="Customer Name"
-                               onChange={(event) => {
-                                setNewDisplayName(event.target.value);
-                            }}     
-                            />
-                                        </p>
-                                        <button type="submit" 
-                            onClick={updateDisplayName}
-                            className="bg-white text-sm text-gray-700 font-medium py-0.5 px-1 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100">Edit</button>
-                                    
+                            {/* Dropdown Menu */}
+                                <div className="relative inline-block text-left dropdown">
+                                    <span className="rounded-md ">
+                                        <button className="inline-flex justify-center w-full px-4 text-sm font-medium text-white transition duration-150 ease-in-out rounded-md hover:text-sky-500 focus:outline-none active:text-gray-800" 
+                                                type="button" 
+                                                aria-haspopup="true" 
+                                                aria-expanded="true" 
+                                                aria-controls="headlessui-menu-items-117">
+                                            <span>Customer Name</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" 
+                                                 className="h-6 w-6" 
+                                                 fill="none"
+                                                 viewBox="0 0 24 24" 
+                                                 stroke="currentColor">
+                                            <path strokeLinecap="round" 
+                                                  strokeLinejoin="round" 
+                                                  strokeWidth="2" 
+                                                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                            </svg>
+                                        </button>
+                                    </span>
+                                    <div className="opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95 z-999">
+                                        <div className="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none" aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
+                                            <div className="py-1">
+                                                <p tabIndex="0" 
+                                                className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" 
+                                                role="menuitem">
+                                                {/* Input: Email Address */}
+                                                    <input className="border-2 w-full px-4 py-2 rounded-md text-md text-gray-700 outline-none"
+                                                            type="text" 
+                                                            name="" 
+                                                            id="" 
+                                                            placeholder="Customer Name"
+                                                            onChange={(event) => {
+                                                                setNewDisplayName(event.target.value);
+                                                            }}     
+                                                            />
+                                                </p>
+                                                <button type="submit" 
+                                                        onClick={updateDisplayName}
+                                                        className="text-md ml-4 px-5 py-0.5 rounded-md bg-gray-800 text-white font-semibold cursor-pointer hover:bg-gray-700">
+                                                            EDIT
+                                                </button>                
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        {/* End of Dropdown Menu */}
-                        <br/>
-                                <span className="text-white text-md font-semi-bold">{user?.displayName}</span>
+                                {/* End of Dropdown Menu */}
+                                <br/>
+                                <span className="text-white text-md font-semi-bold">
+                                    {user?.displayName}
+                                </span>
                             </div>
                             <div className="col-span-1 self-center">
-                                <span className="text-white text-sm font-bold">Email Address</span><br/>
-                                <span className="text-white text-md font-semi-bold">{user?.email}</span>
+                                <span className="text-white text-sm font-bold">
+                                    Email Address
+                                </span><br/>
+                                <span className="text-white text-md font-semi-bold">
+                                    {user?.email}
+                                </span>
                             </div>            
                         </ul>
-                    <span className="text-gray-400 text-sm inline-block pt-2">Below you can update your information or delete your user</span>
-                    <div className="flex justify-center">
-                        <button className="flex justify-center px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none">
-                            <svg xmlns="http://www.w3.org/2000/svg" 
-                                 className="h-6 w-6" 
-                                 fill="none"
-                                 viewBox="0 0 24 24" 
-                                 stroke="currentColor">
-                                <path stroke-linecap="round" 
-                                      stroke-linejoin="round" 
-                                      stroke-width="2" 
-                                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                            </svg>
-                            <span className="ml-2 mt-5px">Edit</span>
-                        </button>
-                    </div>
+                    <span className="text-gray-400 text-sm inline-block pt-2">Below you can delete your user</span>
                     <div className="flex justify-center">
                         <button className="flex justify-center px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none">
                             <svg xmlns="http://www.w3.org/2000/svg" 
@@ -171,9 +163,9 @@ function User() {
                                  fill="none" 
                                  viewBox="0 0 24 24" 
                                  stroke="currentColor">
-                                <path stroke-linecap="round" 
-                                      stroke-linejoin="round" 
-                                      stroke-width="2" 
+                                <path strokeLinecap="round" 
+                                      strokeLinejoin="round" 
+                                      strokeWidth="2" 
                                       d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                             </svg>
                             <span className="ml-2 mt-5px">Delete</span>

@@ -1,10 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import Navbar from '../navbar/Navbar';
 import Footer from '../footer/Footer';
-import {useParams} from 'react-router-dom';
+import {useParams, useNavigate} from 'react-router-dom';
 import axios from 'axios';
+import { collection, addDoc } from 'firebase/firestore/lite';
+import db from '../../FirebaseConfig';
+import { getAuth } from "firebase/auth";
 
 function SingleProductPage() {
+
+    const navigate = useNavigate();
 
     //Using useParams to get the value of the URL parameter
     const {id} = useParams();
@@ -21,6 +26,20 @@ function SingleProductPage() {
         }
         fetchProduct();
     }, [])
+
+    //to get the cart collection from the db
+    const cartCollectionRef = collection(db, 'carts');
+
+    //function to add product to cart
+    const addToCart = async () => {
+        const authentication = getAuth();
+        const user = authentication.currentUser;
+        if(!user) {
+            navigate("/login");
+        } else {
+        const thisProductId = Number({id}.id);
+        await addDoc(cartCollectionRef, {productId: thisProductId});
+    }}
 
     return (
         <>
@@ -48,7 +67,8 @@ function SingleProductPage() {
                                 <span className="font-bold text-5xl leading-none align-baseline">{product.price}</span>
                             </div>
                             <div className="inline-block align-bottom">
-                                <button className="bg-sky-900 opacity-75 hover:opacity-100 text-white hover:text-white rounded-full px-10 py-2 font-semibold">
+                                <button className="bg-sky-900 opacity-75 hover:opacity-100 text-white hover:text-white rounded-full px-10 py-2 font-semibold"
+                                        onClick={addToCart}>
                                     {/* Add icon? */}
                                     <i className="mdi mdi-cart -ml-2 mr-2"></i> BUY NOW
                                 </button>
