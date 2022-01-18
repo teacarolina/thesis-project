@@ -33,7 +33,7 @@ function Cart() {
     const ids = [[1],[2],[3]]
 
     //Using useEffect to fetch the specific products from the API 
-    useEffect( () => {
+    /* useEffect( () => {
         //hämtar inte alltid alla id??
         const fetchProducts = async()=> {
             ids.map(async(id) => {
@@ -48,7 +48,7 @@ function Cart() {
         fetchProducts();
     }, [])
     
-    console.log(products)
+    console.log(products) */
 
     return (
         <>
