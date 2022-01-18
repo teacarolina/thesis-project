@@ -2,15 +2,18 @@ import React, {useState} from 'react';
 import Navbar from '../navbar/Navbar';
 import Footer from '../footer/Footer';
 //check all of these imports and remove non used
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile } from "firebase/auth";
 
 function User() {
+
+    const [newDisplayName, setNewDisplayName] = useState("");
 
     //to get current logged in user
     const authentication = getAuth();
 
     //to set a state which contains the current logged in user
     const [user, setUser] = useState({});
+
     onAuthStateChanged(authentication, (currentUser) => {
       setUser(currentUser);
       //display name and phonenumber to add to input fields when editing customer?
@@ -23,6 +26,17 @@ function User() {
       await signOut(authentication);
       //add redirect to function so when logging out you are sent to login page or home?
     }
+
+    //add update window? refresh?
+    //update display name of current user, updateProfile is from firebase auth
+    const updateDisplayName = async () => {
+        const authentication = getAuth(); 
+        const thisUser = authentication.currentUser;
+        await updateProfile(thisUser, {
+            displayName: newDisplayName
+            });
+      }
+    
 
     return (
         <>
@@ -79,7 +93,55 @@ function User() {
                     <h1 className="py-6 border-b-2 text-xl text-white px-8">My Information</h1>
                         <ul className="py-6 border-b space-y-6 px-8"> 
                             <div className="col-span-1 self-center">
-                                <span className="text-white text-md font-semi-bold">Customer Name</span>
+                                          {/* Dropdown Menu */}
+                        <div className="relative inline-block text-left dropdown">
+                            <span className="rounded-md ">
+                                <button className="inline-flex justify-center w-full px-4 text-sm font-medium text-white transition duration-150 ease-in-out rounded-md hover:text-sky-500 focus:outline-none active:text-gray-800" 
+                                        type="button" 
+                                        aria-haspopup="true" 
+                                        aria-expanded="true" 
+                                        aria-controls="headlessui-menu-items-117">
+                                    <span>Customer Name</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" 
+                                 className="h-6 w-6" 
+                                 fill="none"
+                                 viewBox="0 0 24 24" 
+                                 stroke="currentColor">
+                                <path stroke-linecap="round" 
+                                      stroke-linejoin="round" 
+                                      stroke-width="2" 
+                                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                            </svg>
+                                </button>
+                            </span>
+                            <div className="opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95 z-999">
+                                <div className="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none" aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
+                                    <div className="py-1">
+                                        <p tabindex="0" 
+                                           className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" 
+                                           role="menuitem">
+                                            {/* Input: Email Address */}
+						<input className="pl-2 outline-none border-none"
+                               type="text" 
+                               name="" 
+                               id="" 
+                               placeholder="Customer Name"
+                               onChange={(event) => {
+                                setNewDisplayName(event.target.value);
+                            }}     
+                            />
+                                        </p>
+                                        <button type="submit" 
+                            onClick={updateDisplayName}
+                            className="bg-white text-sm text-gray-700 font-medium py-0.5 px-1 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100">Edit</button>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {/* End of Dropdown Menu */}
+                        <br/>
+                                <span className="text-white text-md font-semi-bold">{user?.displayName}</span>
                             </div>
                             <div className="col-span-1 self-center">
                                 <span className="text-white text-sm font-bold">Email Address</span><br/>

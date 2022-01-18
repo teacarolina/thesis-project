@@ -11,6 +11,7 @@ function Navbar() {
     const [user, setUser] = useState({});
     onAuthStateChanged(authentication, (currentUser) => {
       setUser(currentUser);
+      console.log(currentUser)
     });
     //this is written in return {user.email} or {user?.email}
     //? sets it to if user exists write it out otherwise don't to avoid errors
