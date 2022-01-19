@@ -38,17 +38,28 @@ function Cart() {
         const fetchProducts = async()=> {
             ids.map(async(id) => {
                 const details = await axios.get(`https://fakestoreapi.com/products/${id}`);
-                setProducts([...products, details])
+                console.log(details)
+                //const test = [details]
+                //console.log(test)
+                //setProducts([...products, details])
+                
             })
             //console.log(response.data);     
             //await setProducts(response.data);
             //const reply = await Promise.all(response)
             //console.log(reply)
+            
         }
         fetchProducts();
-    }, [])
+    }, []) */
     
-    console.log(products) */
+    useEffect(async () => {
+        const promises = ids.map(id => {
+            return axios.get(`https://fakestoreapi.com/products/${id}`)
+        })
+        const result = await Promise.all(promises)
+        setProducts(result)
+    }, [])
 
     return (
         <>
@@ -84,14 +95,14 @@ function Cart() {
                                 <div className="col-span-1 self-center">
                                     <img src={product.data.image} 
                                          alt="Product"   
-                                         className="rounded w-full"/>
+                                         className="rounded w-1/2"/>
                                 </div>
                                 <div className="flex flex-col col-span-3 pt-2">
                                     <span className="text-gray-600 text-md font-semi-bold">{product.data.title}</span>
                                 </div>
                                 <div className="col-span-2 pt-3">
                                     <div className="flex items-center space-x-2 text-sm justify-between">
-                                        <div className="w-15 h-8">
+                                        <div className="w-10 h-8">
                                             <div className="relative flex flex-row w-full h-8">
                                                 <input type="number" 
                                                        min="1" 
