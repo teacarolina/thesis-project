@@ -9,6 +9,8 @@ function Cart() {
 
     const [cartItems, setCartItems] = useState([])
 
+    const [cartSum, setCartSum] = useState("");
+
     //to get the cart items collection from the db
     /* const cartItemsCollectionRef = collection(db, 'cartItems');
 
@@ -59,6 +61,24 @@ function Cart() {
         })
         const result = await Promise.all(promises)
         setProducts(result)
+        //console.log(result[0].data.price)
+        /* for(const i of result) {
+            //console.log(i.data.price);
+            const sum = i.data.price
+            console.log(sum)
+        } */
+        /* result.forEach(function(element) { 
+            console.log(element.data.price);
+            var x =+ element.data.price;
+            console.log(x);
+        }) */
+        const sum = result.map(element => element.data.price);
+        console.log(sum);
+        const totalPrice = sum.reduce(function (previousValue, currentValue) {
+            return previousValue + currentValue;
+        })
+        console.log(totalPrice);
+        setCartSum(totalPrice);
     }, [])
 
     return (
@@ -146,7 +166,7 @@ function Cart() {
                     <div className="px-8 border-b">
                         <div className="flex justify-between py-4 text-white">
                             <span>Subtotal</span>
-                            <span className="font-semibold text-white">846.98 SEK</span>
+                            <span className="font-semibold text-white">$ {cartSum}</span>
                         </div>
                         <div className="flex justify-between py-4 text-white">
                             <span>Shipping</span>
@@ -155,7 +175,7 @@ function Cart() {
                     </div>
                     <div className="font-semibold text-xl px-8 flex justify-between py-8 text-white">
                         <span>Total</span>
-                        <span>846.98 SEK</span>
+                        <span>$ {cartSum}</span>
                     </div>
                     <span className="text-gray-400 text-sm inline-block pt-2">Payment is processed with Stripe</span>
                     <div className="flex justify-center">
