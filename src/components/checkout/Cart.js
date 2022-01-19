@@ -4,12 +4,38 @@ import Footer from '../footer/Footer';
 import { collection, addDoc, doc, getDocs } from 'firebase/firestore/lite';
 import db from '../../FirebaseConfig';
 import axios from 'axios';
+import { loadStripe } from '@stripe/stripe-js';
 
 function Cart() {
+
+    //stripe 
+    const stripePromise = loadStripe('pk_test_51KJdEPEfTfK4wgSIKX6K2bJ4nhkbxSjXciiyWJCJJrQ71IkzHmOPEP0SvtpfeCQP87XsSrhxzYgGXj7DOXav4Shm00QmCtVtsK');
+
+    const createCheckoutSession = async (event) => {
+        
+        const stripe = await stripePromise;
+        //error "have to have quantity"?
+        //test data to try stripe connection
+        const quantity = 3; 
+        const name = "hej";
+                                                                           
+        const response = await axios.post("http://localhost:4242/create-checkout-session", {name:name, price:cartSum, quantity:quantity});
+    
+        const sessionId = response.data.id;
+    
+        const result = await stripe.redirectToCheckout({
+          sessionId: sessionId,
+        });
+    
+        if (result.error) {
+          console.log(result.error.message);
+        }
+    };
 
     const [cartItems, setCartItems] = useState([])
 
     const [cartSum, setCartSum] = useState("");
+
 
     //to get the cart items collection from the db
     /* const cartItemsCollectionRef = collection(db, 'cartItems');
@@ -179,7 +205,9 @@ function Cart() {
                     </div>
                     <span className="text-gray-400 text-sm inline-block pt-2">Payment is processed with Stripe</span>
                     <div className="flex justify-center">
-                            <button className="flex justify-center px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none">
+                            <button className="flex justify-center px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none"
+                                    role="link"
+                                    onClick={createCheckoutSession}>
                                 <svg aria-hidden="true" 
                                     data-prefix="far" 
                                     data-icon="credit-card" 
