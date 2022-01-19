@@ -27,7 +27,6 @@ function User() {
       //add redirect to function so when logging out you are sent to login page or home?
     }
 
-    //add update window? refresh?
     //update display name of current user, updateProfile is from firebase auth
     const updateDisplayName = async () => {
         const authentication = getAuth(); 
@@ -35,6 +34,7 @@ function User() {
         await updateProfile(thisUser, {
             displayName: newDisplayName
             });
+        window.location.reload();
       }
     
 

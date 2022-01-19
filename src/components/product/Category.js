@@ -25,7 +25,7 @@ function Category() {
             setCategoryProduct(response.data);
         }
         fetchProducts();
-    }, [])
+    }, [categoryProduct])
 
     return (
         <>
