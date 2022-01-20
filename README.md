@@ -53,4 +53,7 @@ Add what the app needs to work (modules, libraries, etc). List all requirements 
 !!!!!!!!!!!!!!!!
 The installation section (required*) shall make it clear how to install the module.
 
+https://www.npmjs.com/package/react-ig-feed
+npm install --save react-ig-feed
+
 ### ???????????

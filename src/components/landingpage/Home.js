@@ -4,6 +4,8 @@ import Footer from '../footer/Footer';
 import ProductCard from '../product/ProductCard';
 import axios from 'axios';
 import Header from '../header/Header';
+import InstagramFeed  from 'react-ig-feed';
+import 'react-ig-feed/dist/index.css';
 
 function Home() {
 
@@ -105,9 +107,28 @@ function Home() {
                     )
                 })}
             </div>
-        
+            <section className="w-full bg-sky-900">
+		        <div className="container px-4 mx-auto">
+			        <div className="grid grid-cols-1 my-4  h-40">
+                        <div className="flex flex-row text-center justify-center text-white my-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" 
+                                 className="h-6 w-6 text-white my-auto mr-2" 
+                                 fill="none" 
+                                 viewBox="0 0 24 24" 
+                                 stroke="currentColor">
+                                <path stroke-linecap="round" 
+                                      stroke-linejoin="round" 
+                                      stroke-width="2" 
+                                      d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+                            </svg>
+                            <h1 className="font-bold text-3xl">Follow us on Instagram</h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
             {/*INSTAGRAM FEED*/}
-          
+            <InstagramFeed token="IGQVJXZAnhMc0VwWVVVdTVuX3dqVGRiMzNDdkJkMldXQzVhNlY0VGRLS25hdmpHQlF3bzlpMkR1WWVFZAXJTdkpVNVJXaF9fTElOaFBJR0FBcy01MUY1RHdzZAmRvU1k1OGV1M184WVhRYmx3TG5HUEpHZAgZDZD"
+                           counter="6"/>  
         <Footer/>
         </>
     )
