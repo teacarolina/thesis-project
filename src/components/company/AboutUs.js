@@ -17,7 +17,7 @@ function AboutUs() {
                     <div className="w-full md:w-4/12 ml-auto mr-auto px-4">
                         <img alt="..." 
                              className="max-w-full rounded-lg shadow-lg mb-7" 
-                             src="https://images.unsplash.com/photo-1555212697-194d092e3b8f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80"/>
+                             src="https://cdn.pixabay.com/photo/2019/02/21/11/18/shopping-4011117_1280.jpg"/>
                     </div>
                     <div className="w-full md:w-5/12 ml-auto mr-auto px-4">
                         <div className="md:pr-12">
