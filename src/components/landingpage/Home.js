@@ -46,8 +46,8 @@ function Home() {
                         Fast Customer Service
                     </h6>
                     <p className="mt-2 mb-4 text-blueGray-400">
-                        Some quick example text to build on the card title and make up
-                        the bulk of the card's content.
+                        We offer a great customer service experience thanks to our deal
+                        team that is available for you.
                     </p>
                 </div>
                 <div className="w-full lg:w-3/12 px-4 text-center">
@@ -67,8 +67,8 @@ function Home() {
                         More for members 
                     </h5>
                     <p className="mt-2 mb-4 text-blueGray-400">
-                        Some quick example text to build on the card title and make up
-                        the bulk of the card's content.
+                        As a member in our deal club you will get more for your money
+                        and the latest deals directly to your inbox.
                     </p>
                 </div>
                     <div className="w-full lg:w-3/12 px-4 text-center">
@@ -84,8 +84,8 @@ function Home() {
                         </div>
                         <h5 className="text-xl mt-5 font-semibold text-black">Daily Deals</h5>
                         <p className="mt-2 mb-4 text-blueGray-400">
-                            Some quick example text to build on the card title and make up
-                            the bulk of the card's content.
+                            Every day is a new day to find good deals. We update our deals
+                            on a daily basis. Never miss a good deal!
                         </p>
                     </div>
             </div>

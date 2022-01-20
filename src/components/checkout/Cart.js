@@ -180,14 +180,12 @@ function Cart() {
                     </div>
                 </div>
                 <div className="col-span-1 bg-sky-900 lg:block hidden">
-                    <h1 className="py-6 border-b-2 text-xl text-white px-8">Customer Information</h1>
+                    <h1 className="py-6 border-b-2 text-xl text-white px-8">Order Information</h1>
                         <ul className="py-6 border-b space-y-6 px-8"> 
                             <div className="col-span-1 self-center">
-                                <span className="text-white text-md font-semi-bold">Customer Name</span>
-                            </div>
-                            <div className="col-span-1 self-center">
-                                <span className="text-white text-md font-semi-bold">Customer Address</span>
-                            </div>            
+                                <span className="text-white text-sm font-bold">Return Policy</span><br/>
+                                <span className="text-white text-md font-semi-bold">Our policy lasts 30 days</span>
+                            </div>         
                         </ul>
                     <div className="px-8 border-b">
                         <div className="flex justify-between py-4 text-white">

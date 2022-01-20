@@ -65,22 +65,22 @@ function Navbar() {
                                 <div className="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none" aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                                     <div className="py-1">
                                         <p tabIndex="0" 
-                                           className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" 
+                                           className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left hover:text-sky-500" 
                                            role="menuitem">
                                             <Link to={`/category/electronics`}>Electronics</Link>
                                         </p>
                                         <p tabIndex="1" 
-                                           className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" 
+                                           className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left hover:text-sky-500" 
                                            role="menuitem">
                                             <Link to={`/category/jewelery`}>Jewelery</Link>
                                         </p>
                                         <p tabIndex="2" 
-                                           className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" 
+                                           className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left hover:text-sky-500" 
                                            role="menuitem">
                                             <Link to={`/category/men's-clothing`}>Men's clothing</Link>
                                         </p>
                                         <p tabIndex="3" 
-                                           className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" 
+                                           className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left hover:text-sky-500" 
                                            role="menuitem">
                                             <Link to={`/category/women's-clothing`}>Women's clothing</Link>
                                         </p>

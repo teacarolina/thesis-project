@@ -96,7 +96,7 @@ function User() {
                             {/* Dropdown Menu */}
                                 <div className="relative inline-block text-left dropdown">
                                     <span className="rounded-md ">
-                                        <button className="inline-flex justify-center w-full px-4 text-sm font-medium text-white transition duration-150 ease-in-out rounded-md hover:text-sky-500 focus:outline-none active:text-gray-800" 
+                                        <button className="inline-flex justify-center w-full px-4 text-sm font-bold text-white transition duration-150 ease-in-out rounded-md hover:text-sky-500 focus:outline-none active:text-gray-800" 
                                                 type="button" 
                                                 aria-haspopup="true" 
                                                 aria-expanded="true" 
