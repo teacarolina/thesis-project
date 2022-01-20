@@ -10,6 +10,8 @@ import Cart from './checkout/Cart';
 import User from './login/User';
 import Shop from './product/Shop';
 import SingleProductPage from './product/SingleProductPage';
+import Success from './checkout/Success';
+import Error from './checkout/Error';
 
 import {
     BrowserRouter as Router,
@@ -33,6 +35,9 @@ export default function AppRoute() {
                 <Route path='/my-page' element={<User/>}/>
                 <Route path='/shop' element={<Shop/>}/>
                 <Route path='/product/:id' element={<SingleProductPage/>}/>
+                <Route path='/success' element={<Success/>}/>
+                <Route path='/error' element={<Error/>}/>
+
             </Routes>
         </Router>
         </> 

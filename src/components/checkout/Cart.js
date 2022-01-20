@@ -14,10 +14,9 @@ function Cart() {
     const createCheckoutSession = async (event) => {
         
         const stripe = await stripePromise;
-        //error "have to have quantity"?
-        //test data to try stripe connection
-        const quantity = 3; 
-        const name = "hej";
+       
+        const quantity = 1; 
+        const name = "Din order";
                                                                            
         const response = await axios.post("http://localhost:4242/create-checkout-session", {name:name, price:cartSum, quantity:quantity});
     
@@ -32,15 +31,15 @@ function Cart() {
         }
     };
 
-    const [cartItems, setCartItems] = useState([])
+    const [cartItems, setCartItems] = useState([]);
+    const [cartItemProductIds, setCartItemProductIds] = useState([]);
 
     const [cartSum, setCartSum] = useState("");
 
-
     //to get the cart items collection from the db
-    /* const cartItemsCollectionRef = collection(db, 'cartItems');
+    const cartItemsCollectionRef = collection(db, 'cartItems');
 
-    useEffect(() => {
+   /*  useEffect(() => {
         
         //???????????????
         const cart = async()=>{
@@ -50,9 +49,11 @@ function Cart() {
         }
 
         cart();
-        console.log(cartItems)
+        //console.log("cartitems", cartItems[0].productId)
+        setCartItemProductIds(cartItems.map(index => index.productId));
+        console.log(cartItemProductIds);
         
-    }, []) */
+    }, [])  */
 
     //Using state to save the specific product
     const [products, setProducts] = useState([]);
@@ -101,12 +102,12 @@ function Cart() {
         const sum = result.map(element => element.data.price);
         console.log(sum);
         const totalPrice = sum.reduce(function (previousValue, currentValue) {
-            return previousValue + currentValue;
-        })
-        console.log(totalPrice);
-        setCartSum(totalPrice);
-    }, [])
-
+        return previousValue + currentValue;
+       })
+      //  console.log(totalPrice);
+    setCartSum(totalPrice);
+  }, [])
+  
     return (
         <>
         <Navbar/>
