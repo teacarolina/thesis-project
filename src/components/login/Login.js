@@ -107,6 +107,9 @@ function Login() {
                           className="block w-full bg-sky-900 opacity-75 hover:opacity-100 text-white hover:text-white mt-4 py-2 rounded-2xl font-semibold mb-2">Login</button>
                       <span className="text-sm ml-2 hover:text-sky-500 cursor-pointer"><Link to="/register">No account yet ?</Link></span>
               </form>
+              <button type="submit" 
+                          onClick={loginUser}
+                          className="block w-full bg-sky-900 opacity-75 hover:opacity-100 text-white hover:text-white mt-4 py-2 rounded-2xl font-semibold mb-2">Login</button>  
           </div>
       </div>  
       </>

@@ -1,7 +1,64 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile } from "firebase/auth";
+import { collection, addDoc, doc, getDocs, query, where, deleteDoc } from 'firebase/firestore/lite';
+import db from '../../FirebaseConfig';
 
 function Success() {
+
+    //to get current logged in user
+    const authentication = getAuth();
+
+    //to set a state which contains the current logged in user
+    const [user, setUser] = useState({});
+    const [cartData, setCartData] = useState([])
+
+    onAuthStateChanged(authentication, (currentUser) => {
+      setUser(currentUser);
+      //display name and phonenumber to add to input fields when editing customer?
+      //console.log(currentUser.uid);
+    });
+
+    //const [cartId, setCartId] = useState("");
+    const cartCollectionRef = collection(db, 'carts');
+    const cartItemsCollectionRef = collection(db, 'cartItems');
+
+    useEffect(()=>{
+        
+        const getCartItemIds = async () => {
+            const cartId = localStorage.getItem("Cart Id")
+            console.log(cartId)
+            const data = await getDocs(query(cartItemsCollectionRef, where("cartId", "==", cartId)));
+            //console.log(data)
+            const cartData = data.docs.map((doc) => (doc.id))
+            console.log(cartData)
+            cartData.map(id => {
+                deleteDoc(doc(cartItemsCollectionRef, id))
+                console.log(id)
+            })
+            //setCartData(cartData)
+            //return console.log(cartData)
+        }
+        
+        getCartItemIds()
+
+        /* const deleteCartItems = async () => {
+            const cartItemCollection = cartData.map(id => {
+                deleteDoc(doc(cartItemsCollectionRef, id))
+                console.log(id)
+            })
+            localStorage.removeItem("Cart Item Ids")
+        }
+
+        deleteCartItems(); */
+
+        const deleteCart = async () => {
+            const cartId = localStorage.getItem("Cart Id")
+            deleteDoc(doc(cartCollectionRef, cartId))
+        }
+
+        deleteCart();
+    }, [])
 
   return (
         <>

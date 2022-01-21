@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
+import { collection, addDoc, doc, getDocs } from 'firebase/firestore/lite';
+
+import db from '../../FirebaseConfig';
 
 function Navbar() {
 
@@ -16,6 +19,21 @@ function Navbar() {
     });
     //this is written in return {user.email} or {user?.email}
     //? sets it to if user exists write it out otherwise don't to avoid errors
+
+    const [cartItems, setCartItems] = useState([]);
+    const [cartItemProductIds, setCartItemProductIds] = useState([]);
+    const cartItemsCollectionRef = collection(db, 'cartItems');
+
+    const setCart = async () => {
+        const data = await getDocs(cartItemsCollectionRef);
+        console.log(data);
+        const mapfunction = data.docs.map((doc) => ({...doc.data(), id: doc.id}))
+        console.log(mapfunction)
+        const test = mapfunction.map(index => [index.productId]);
+        
+        console.log(test)
+        localStorage.setItem("Cart Item Ids", JSON.stringify(test));
+    }
 
     return (
         <>
@@ -130,7 +148,8 @@ function Navbar() {
                 }
                     <div className="flex justify-center md:block">
                         <p className="relative text-gray-700 hover:text-sky-500">
-                            <Link to="/checkout">
+                            <Link to="/checkout"
+                                  onClick={setCart}>
                             <svg className="h-5 w-5" 
                                 viewBox="0 0 24 24" 
                                 fill="none" 

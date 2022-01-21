@@ -60,34 +60,20 @@ function Cart() {
 
     //testing for now
     const ids = [[1],[2],[3]]
-
-    //Using useEffect to fetch the specific products from the API 
-    /* useEffect( () => {
-        //hämtar inte alltid alla id??
-        const fetchProducts = async()=> {
-            ids.map(async(id) => {
-                const details = await axios.get(`https://fakestoreapi.com/products/${id}`);
-                console.log(details)
-                //const test = [details]
-                //console.log(test)
-                //setProducts([...products, details])
-                
-            })
-            //console.log(response.data);     
-            //await setProducts(response.data);
-            //const reply = await Promise.all(response)
-            //console.log(reply)
-            
-        }
-        fetchProducts();
-    }, []) */
+    const idsStorage = JSON.parse(localStorage.getItem("Cart Item Ids"));
+    console.log(ids, idsStorage)
     
+    //Using useEffect to fetch the specific products from the API 
     useEffect(async () => {
-        const promises = ids.map(id => {
+        /* const ids = JSON.parse(localStorage.getItem("Cart Item Ids"));
+        console.log(ids) */
+        const promises = idsStorage.map(id => {
             return axios.get(`https://fakestoreapi.com/products/${id}`)
-        })
+        }) 
+        console.log("promise", promises)
         const result = await Promise.all(promises)
-        setProducts(result)
+        setProducts(result) 
+        console.log("result",products)
         //console.log(result[0].data.price)
         /* for(const i of result) {
             //console.log(i.data.price);
@@ -100,12 +86,13 @@ function Cart() {
             console.log(x);
         }) */
         const sum = result.map(element => element.data.price);
-        console.log(sum);
+       console.log("sums",sum);
         const totalPrice = sum.reduce(function (previousValue, currentValue) {
         return previousValue + currentValue;
-       })
-      //  console.log(totalPrice);
+      })
+        console.log(totalPrice);
     setCartSum(totalPrice);
+        
   }, [])
   
     return (
@@ -136,7 +123,7 @@ function Cart() {
                 <div className="col-span-1 bg-white lg:block hidden">
                     <h1 className="py-6 border-b-2 text-xl text-gray-600 px-8">Your Cart</h1>
                         <ul className="py-6 border-b space-y-6 px-8">
-                            <li className="grid grid-cols-6 gap-2 border-b-1">
+                           <li className="grid grid-cols-6 gap-2 border-b-1">
                                 {products.map((product) => {
                                     return (<>
                                 <div className="col-span-1 self-center">

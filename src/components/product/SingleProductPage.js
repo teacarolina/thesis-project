@@ -57,6 +57,7 @@ function SingleProductPage() {
             //this cart id where user id is?
             const thisCartId = carts[0].id;
             console.log(thisCartId)
+            localStorage.setItem("Cart Id", thisCartId)
             const thisProductId = Number({id}.id);
             await addDoc(cartItemsCollectionRef, {productId: thisProductId, cartId: thisCartId});
     }}
