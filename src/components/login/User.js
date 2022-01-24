@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../navbar/Navbar';
 import Footer from '../footer/Footer';
-import { getAuth, onAuthStateChanged, signOut, updateProfile } from "firebase/auth";
+import { deleteUser, getAuth, onAuthStateChanged, signOut, updateProfile, reauthenticateWithCredential, EmailAuthProvider } from "firebase/auth";
 import { collection, getDocs, query, where } from 'firebase/firestore/lite';
 import db from '../../FirebaseConfig';
 import { useNavigate } from 'react-router-dom';
@@ -13,6 +13,8 @@ function User() {
     const navigate = useNavigate();
 
     const [newDisplayName, setNewDisplayName] = useState("");
+    const [currentPassword, setCurrentPassword] = useState("");
+    const [currentEmail, setCurrentEmail] = useState("");
 
     //to get current logged in user
     const authentication = getAuth();
@@ -40,6 +42,19 @@ function User() {
             });
         window.location.reload();
       }
+
+    //function to delete current user
+    const deleteThisUser = async () => {
+        const authentication = getAuth(); 
+        const thisUser = authentication.currentUser;
+        const credential = EmailAuthProvider.credential(
+            currentEmail,
+            currentPassword
+        );
+        reauthenticateWithCredential(thisUser, credential);
+        await thisUser.delete();
+        navigate("/login");
+    }
 
     //get the collection from db 
     const ordersCollectionRef = collection(db, 'orders');
@@ -145,7 +160,7 @@ function User() {
                                                 <p tabIndex="0" 
                                                 className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" 
                                                 role="menuitem">
-                                                {/* Input: Email Address */}
+                                                {/* Input: Customer Name */}
                                                     <input className="border-2 w-full px-4 py-2 rounded-md text-md text-gray-700 outline-none"
                                                             type="text" 
                                                             name="" 
@@ -178,27 +193,75 @@ function User() {
                                 <span className="text-white text-md font-semi-bold">
                                     {user?.email}
                                 </span>
+                            </div>
+                            <div className="col-span-1 self-center">
+                            {/* Dropdown Menu */}
+                                <div className="relative inline-block text-left dropdown">
+                                    <span className="rounded-md ">
+                                        <button className="inline-flex justify-center w-full px-4 text-sm font-bold text-white transition duration-150 ease-in-out rounded-md hover:text-sky-500 focus:outline-none active:text-gray-800" 
+                                                type="button" 
+                                                aria-haspopup="true" 
+                                                aria-expanded="true" 
+                                                aria-controls="headlessui-menu-items-117">
+                                            <span>Delete User</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" 
+                                                 className="h-6 w-6" 
+                                                 fill="none" 
+                                                 viewBox="0 0 24 24" 
+                                                 stroke="currentColor">
+                                                <path strokeLinecap="round" 
+                                                      strokeLinejoin="round" 
+                                                      strokeWidth="2" 
+                                                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                            </svg>
+                                        </button>
+                                    </span>
+                                    <div className="opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95 z-999">
+                                        <div className="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none" aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
+                                            <div className="py-1">
+                                            <span className="text-gray-400 text-sm inline-block pt-2 pl-4">
+                        Email address and password is required to delete user
+                    </span>
+                                                <p tabIndex="0" 
+                                                className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" 
+                                                role="menuitem">
+                                                {/* Input: Email Address */}
+                                                    <input className="border-2 w-full px-4 py-2 rounded-md text-md text-gray-700 outline-none"
+                                                            type="text" 
+                                                            name="" 
+                                                            id="" 
+                                                            placeholder="Email Address"
+                                                            onChange={(event) => {
+                                                                setCurrentEmail(event.target.value);
+                                                            }}     
+                                                            />
+                                                </p>
+                                                <p tabIndex="0" 
+                                                className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" 
+                                                role="menuitem">
+                                                {/* Input: Password */}
+                                                    <input className="border-2 w-full px-4 py-2 rounded-md text-md text-gray-700 outline-none"
+                                                            type="password" 
+                                                            name="" 
+                                                            id="" 
+                                                            placeholder="Password"
+                                                            onChange={(event) => {
+                                                                setCurrentPassword(event.target.value);
+                                                            }}     
+                                                            />
+                                                </p>
+                                                <button type="submit" 
+                                                        onClick={deleteThisUser}
+                                                        className="text-md ml-4 px-5 py-0.5 rounded-md bg-gray-800 text-white font-semibold cursor-pointer hover:bg-gray-700">
+                                                            DELETE
+                                                </button>                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* End of Dropdown Menu */}
                             </div>            
                         </ul>
-                    <span className="text-gray-400 text-sm inline-block pt-2">
-                        Below you can delete your user
-                    </span>
-                    <div className="flex justify-center">
-                        <button className="flex justify-center px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none"
-                                onClick="">
-                            <svg xmlns="http://www.w3.org/2000/svg" 
-                                 className="h-6 w-6" 
-                                 fill="none" 
-                                 viewBox="0 0 24 24" 
-                                 stroke="currentColor">
-                                <path strokeLinecap="round" 
-                                      strokeLinejoin="round" 
-                                      strokeWidth="2" 
-                                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                            </svg>
-                            <span className="ml-2 mt-5px">Delete</span>
-                        </button>
-                    </div>
                     <div className="flex justify-center">
                         <button className="flex justify-center px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none"
                                 onClick={logout}>

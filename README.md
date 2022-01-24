@@ -46,14 +46,9 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 To learn React, check out the [React documentation](https://reactjs.org/).
 
 ### Requirements
-!!!!!!!!!!!!!!!!
-Add what the app needs to work (modules, libraries, etc). List all requirements here
 
-### Installation
-!!!!!!!!!!!!!!!!
-The installation section (required*) shall make it clear how to install the module.
-
-https://www.npmjs.com/package/react-ig-feed
-npm install --save react-ig-feed
-
-### ???????????
+Stripe https://stripe.com/docs
+Firebase https://firebase.google.com/docs
+Tailwind CSS https://tailwindcss.com/
+Fake Store API https://fakestoreapi.com/docs
+Instagram Feed Component https://www.npmjs.com/package/react-ig-feed

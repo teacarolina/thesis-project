@@ -101,13 +101,17 @@ function Register() {
                                 }}
                             />
                     </div>
-					<button type="submit" 
-                            onClick={registerUser}
-                            className="block w-full bg-sky-900 opacity-75 hover:opacity-100 text-white mt-4 py-2 rounded-2xl font-semibold mb-2">Register</button>
 						<span className="text-sm ml-2 hover:text-sky-500 cursor-pointer">
                             <Link to="/login">Already have an account ?</Link>
                         </span>
 		        </form> 
+                <div className="flex justify-center py-10 items-center bg-white">
+                <button type="submit" 
+                            onClick={registerUser}
+                            className="block w-full bg-sky-900 opacity-75 hover:opacity-100 text-white mt-4 py-2 rounded-2xl font-semibold mb-2">
+                                Register
+                </button>
+                </div>
 	        </div>
         </div>  
         </>
