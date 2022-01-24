@@ -1,16 +1,21 @@
 import React, {useEffect, useState} from 'react';
 import Navbar from '../navbar/Navbar';
 import Footer from '../footer/Footer';
-import { collection, addDoc, doc, getDocs } from 'firebase/firestore/lite';
+import { collection, addDoc } from 'firebase/firestore/lite';
 import db from '../../FirebaseConfig';
 import axios from 'axios';
 import { loadStripe } from '@stripe/stripe-js';
+import { getAuth } from "firebase/auth";
+import { timestampConverter } from '../../helper';
+import { useNavigate } from 'react-router-dom';
 
 function Cart() {
 
-    //stripe 
-    const stripePromise = loadStripe('pk_test_51KJdEPEfTfK4wgSIKX6K2bJ4nhkbxSjXciiyWJCJJrQ71IkzHmOPEP0SvtpfeCQP87XsSrhxzYgGXj7DOXav4Shm00QmCtVtsK');
+    const navigate = useNavigate();
 
+    const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
+
+    //stripe function to create the checkout session
     const createCheckoutSession = async (event) => {
         
         const stripe = await stripePromise;
@@ -31,69 +36,41 @@ function Cart() {
         }
     };
 
-    const [cartItems, setCartItems] = useState([]);
-    const [cartItemProductIds, setCartItemProductIds] = useState([]);
+    const ordersCollectionRef = collection(db, 'orders');    
+
+    //function to create order 
+    const createOrder = async () => {
+        const authentication = getAuth();
+        const user = authentication.currentUser;
+        if(!user) {
+            navigate("/login");
+        } else {
+            const thisDate = new Date();
+            const convertedDate = timestampConverter(thisDate);
+            await addDoc(ordersCollectionRef, {userId: user.uid, orderDate: convertedDate, orderSum: cartSum});
+    }}
 
     const [cartSum, setCartSum] = useState("");
-
-    //to get the cart items collection from the db
-    const cartItemsCollectionRef = collection(db, 'cartItems');
-
-   /*  useEffect(() => {
-        
-        //???????????????
-        const cart = async()=>{
-            
-            const data = await getDocs(cartItemsCollectionRef);
-            setCartItems(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
-        }
-
-        cart();
-        //console.log("cartitems", cartItems[0].productId)
-        setCartItemProductIds(cartItems.map(index => index.productId));
-        console.log(cartItemProductIds);
-        
-    }, [])  */
 
     //Using state to save the specific product
     const [products, setProducts] = useState([]);
 
-    //testing for now
-    const ids = [[1],[2],[3]]
+    //collect the cart item ids from local storage
     const idsStorage = JSON.parse(localStorage.getItem("Cart Item Ids"));
-    console.log(ids, idsStorage)
     
     //Using useEffect to fetch the specific products from the API 
     useEffect(async () => {
-        /* const ids = JSON.parse(localStorage.getItem("Cart Item Ids"));
-        console.log(ids) */
         const promises = idsStorage.map(id => {
             return axios.get(`https://fakestoreapi.com/products/${id}`)
         }) 
-        console.log("promise", promises)
-        const result = await Promise.all(promises)
-        setProducts(result) 
-        console.log("result",products)
-        //console.log(result[0].data.price)
-        /* for(const i of result) {
-            //console.log(i.data.price);
-            const sum = i.data.price
-            console.log(sum)
-        } */
-        /* result.forEach(function(element) { 
-            console.log(element.data.price);
-            var x =+ element.data.price;
-            console.log(x);
-        }) */
+        const result = await Promise.all(promises);
+        setProducts(result);
         const sum = result.map(element => element.data.price);
-       console.log("sums",sum);
         const totalPrice = sum.reduce(function (previousValue, currentValue) {
         return previousValue + currentValue;
       })
-        console.log(totalPrice);
-    setCartSum(totalPrice);
-        
-  }, [])
+      setCartSum(totalPrice);
+    }, [])
   
     return (
         <>
@@ -132,7 +109,9 @@ function Cart() {
                                          className="rounded w-1/2"/>
                                 </div>
                                 <div className="flex flex-col col-span-3 pt-2">
-                                    <span className="text-gray-600 text-md font-semi-bold">{product.data.title}</span>
+                                    <span className="text-gray-600 text-md font-semi-bold">
+                                        {product.data.title}
+                                    </span>
                                 </div>
                                 <div className="col-span-2 pt-3">
                                     <div className="flex items-center space-x-2 text-sm justify-between">
@@ -144,7 +123,9 @@ function Cart() {
                                                        className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black" />
                                             </div>
                                         </div>
-                                        <span className="text-green-400 font-semibold inline-block">${product.data.price}</span>
+                                        <span className="text-green-400 font-semibold inline-block">
+                                            ${product.data.price}
+                                        </span>
                                         <button>
                                             <svg className="w-4 h-4" 
                                                  fill="none" 
@@ -168,40 +149,52 @@ function Cart() {
                     </div>
                 </div>
                 <div className="col-span-1 bg-sky-900 lg:block hidden">
-                    <h1 className="py-6 border-b-2 text-xl text-white px-8">Order Information</h1>
+                    <h1 className="py-6 border-b-2 text-xl text-white px-8">
+                        Order Information
+                    </h1>
                         <ul className="py-6 border-b space-y-6 px-8"> 
                             <div className="col-span-1 self-center">
-                                <span className="text-white text-sm font-bold">Return Policy</span><br/>
-                                <span className="text-white text-md font-semi-bold">Our policy lasts 30 days</span>
+                                <span className="text-white text-sm font-bold">
+                                    Return Policy
+                                </span><br/>
+                                <span className="text-white text-md font-semi-bold">
+                                    Our policy lasts 30 days
+                                </span>
                             </div>         
                         </ul>
                     <div className="px-8 border-b">
                         <div className="flex justify-between py-4 text-white">
                             <span>Subtotal</span>
-                            <span className="font-semibold text-white">$ {cartSum}</span>
+                            <span className="font-semibold text-white">
+                                $ {cartSum}
+                            </span>
                         </div>
                         <div className="flex justify-between py-4 text-white">
                             <span>Shipping</span>
-                            <span className="font-semibold text-white">Free</span>
+                            <span className="font-semibold text-white">
+                                Free
+                            </span>
                         </div>
                     </div>
                     <div className="font-semibold text-xl px-8 flex justify-between py-8 text-white">
                         <span>Total</span>
                         <span>$ {cartSum}</span>
                     </div>
-                    <span className="text-gray-400 text-sm inline-block pt-2">Payment is processed with Stripe</span>
+                    <span className="text-gray-400 text-sm inline-block pt-2">
+                        Payment is processed with Stripe
+                    </span>
                     <div className="flex justify-center">
                             <button className="flex justify-center px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none"
                                     role="link"
-                                    onClick={createCheckoutSession}>
+                                    onClick={function(event){createCheckoutSession(); createOrder();}}>
                                 <svg aria-hidden="true" 
-                                    data-prefix="far" 
-                                    data-icon="credit-card" 
-                                    className="w-8" 
-                                    xmlns="http://www.w3.org/2000/svg" 
-                                    viewBox="0 0 576 512">
+                                     data-prefix="far" 
+                                     data-icon="credit-card" 
+                                     className="w-8" 
+                                     xmlns="http://www.w3.org/2000/svg" 
+                                     viewBox="0 0 576 512">
                                         <path fill="currentColor" 
-                                            d="M527.9 32H48.1C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48.1 48h479.8c26.6 0 48.1-21.5 48.1-48V80c0-26.5-21.5-48-48.1-48zM54.1 80h467.8c3.3 0 6 2.7 6 6v42H48.1V86c0-3.3 2.7-6 6-6zm467.8 352H54.1c-3.3 0-6-2.7-6-6V256h479.8v170c0 3.3-2.7 6-6 6zM192 332v40c0 6.6-5.4 12-12 12h-72c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h72c6.6 0 12 5.4 12 12zm192 0v40c0 6.6-5.4 12-12 12H236c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h136c6.6 0 12 5.4 12 12z"/>
+                                              d="M527.9 32H48.1C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48.1 48h479.8c26.6 0 48.1-21.5 48.1-48V80c0-26.5-21.5-48-48.1-48zM54.1 80h467.8c3.3 0 6 2.7 6 6v42H48.1V86c0-3.3 2.7-6 6-6zm467.8 352H54.1c-3.3 0-6-2.7-6-6V256h479.8v170c0 3.3-2.7 6-6 6zM192 332v40c0 6.6-5.4 12-12 12h-72c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h72c6.6 0 12 5.4 12 12zm192 0v40c0 6.6-5.4 12-12 12H236c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h136c6.6 0 12 5.4 12 12z"/>
                                 </svg>
                                 <span className="ml-2 mt-5px">Checkout</span>
                             </button>

@@ -1,10 +1,16 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../navbar/Navbar';
 import Footer from '../footer/Footer';
-//check all of these imports and remove non used
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut, updateProfile } from "firebase/auth";
+import { collection, getDocs, query, where } from 'firebase/firestore/lite';
+import db from '../../FirebaseConfig';
+import { useNavigate } from 'react-router-dom';
+
 
 function User() {
+
+    //add function to variable to navigate to other pages 
+    const navigate = useNavigate();
 
     const [newDisplayName, setNewDisplayName] = useState("");
 
@@ -16,15 +22,13 @@ function User() {
 
     onAuthStateChanged(authentication, (currentUser) => {
       setUser(currentUser);
-      //display name and phonenumber to add to input fields when editing customer?
-      console.log(currentUser);
     });
 
     //log out function, signOut is from firebase auth 
     const logout = async () => {
       const authentication = getAuth(); 
       await signOut(authentication);
-      //add redirect to function so when logging out you are sent to login page or home?
+      navigate("/login");
     }
 
     //update display name of current user, updateProfile is from firebase auth
@@ -36,7 +40,18 @@ function User() {
             });
         window.location.reload();
       }
-    
+
+    //get the collection from db 
+    const ordersCollectionRef = collection(db, 'orders');
+    const [orderData, setOrderData] = useState([]);
+
+    useEffect(()=>{
+        const getOrders = async () => {
+            const data = await getDocs(query(ordersCollectionRef, where("userId", "==", user.uid)));
+            setOrderData(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+        }
+        getOrders();
+    }, [])
 
     return (
         <>
@@ -68,23 +83,33 @@ function User() {
                     <table className="border-collapse w-full">
                         <thead>
                             <tr>
-                                <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Order Id</th>
-                                <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Date</th>
-                                <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Total</th>
+                                <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                    Order Id
+                                </th>
+                                <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                    Date
+                                </th>
+                                <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                    Total
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
+                        {orderData.map((order) => {
+                                    return (<>
                             <tr className="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
                                 <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                                    12345
+                                    {order.id}
                                 </td>
                                 <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
-                                    12-01-21
+                                    {order.orderDate}
                                 </td>
                                 <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
-                                    1200 SEK
+                                    ${order.orderSum}
                                 </td>
                             </tr>
+                            </>
+                            )})}
                         </tbody>
                     </table>
                 </div>        
@@ -155,9 +180,12 @@ function User() {
                                 </span>
                             </div>            
                         </ul>
-                    <span className="text-gray-400 text-sm inline-block pt-2">Below you can delete your user</span>
+                    <span className="text-gray-400 text-sm inline-block pt-2">
+                        Below you can delete your user
+                    </span>
                     <div className="flex justify-center">
-                        <button className="flex justify-center px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none">
+                        <button className="flex justify-center px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none"
+                                onClick="">
                             <svg xmlns="http://www.w3.org/2000/svg" 
                                  className="h-6 w-6" 
                                  fill="none" 

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../navbar/Navbar';
 import Footer from '../footer/Footer';
 import ProductCard from './ProductCard';
@@ -49,7 +49,6 @@ function Shop() {
                                    fillRule="nonzero"/>
                     </svg>
                     <select className="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none">
-                        {/* Implement sorting by ASC or DESC of the results? */}
                         <option>Order by</option>
                         <option>ASC</option>
                         <option>DESC</option>
@@ -64,6 +63,7 @@ function Shop() {
                         title={product.title}
                         price={product.price}
                         image={product.image}
+                        rating={product.rating.rate}
                     />
                     )
                 })}

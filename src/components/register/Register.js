@@ -1,12 +1,17 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import db from '../../FirebaseConfig';
 import { collection, addDoc } from 'firebase/firestore/lite';
-//import auth from '../../FirebaseConfig';
-
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 function Register() {
+
+    //adding the function to a variable to be able to navigate to other pages
+    const navigate = useNavigate();
+    
+    const [registerEmail, setRegisterEmail] = useState("");
+    const [registerPassword, setRegisterPassword] = useState("");
+    const [error, setError] = useState("");
 
     //to get the cart collection from the db
     const cartCollectionRef = collection(db, 'carts');
@@ -19,50 +24,7 @@ function Register() {
         await addDoc(cartCollectionRef, {userId: thisUserId});
     }
 
-    const navigate = useNavigate();
-
-    //Explain + add password security and email validation + check if same email is registered
-    
-    //add to firebase without authentication for other tables such as cart
-    //const [newName, setNewName] = useState("");
-    //const [newAddress, setNewAddress] = useState("");
-    //const [newEmail, setNewEmail] = useState("");
-    //const [newPassword, setNewPassword] = useState("");
-
-    //const usersCollectionRef = collection(db, 'users');
-
-    /*const createUser = async () => {
-        await addDoc(usersCollectionRef, {name: newName, address: newAddress, email: newEmail, password: newPassword});
-    };*/
-    
-    const [registerEmail, setRegisterEmail] = useState("");
-    const [registerPassword, setRegisterPassword] = useState("");
-    const [error, setError] = useState("");
-    //for login
-    //const [loginEmail, setLoginEmail] = useState("");
-    //const [loginPassword, setLoginPassword] = useState("");
-    //lägg till event på input field på login
-
-    //to get current logged in user
-    //const authentication = getAuth();
-    //this is written in return {authentication.currentUser.email}
-
-    //to set a state which contains the current logged in user
-    //const [user, setUser] = useState({});
-    //onAuthStateChanged(authentication, (currentUser) => {
-      //  setUser(currentUser);
-    //});
-    //this is written in return {user.email} or {user?.email}
-    //? sets it to if user exists write it out otherwise don't to avoid errors
-
-    //log out function, signOut is from firebase auth 
-    //const logout = async () => {
-      //  const authentication = getAuth(); 
-        //await signOut(authentication);
-    //}
-    //<button onClick={logout}>Logga ut</button> 
-    //this is added to a button 
-
+    //function to register a new user
     const registerUser = async () => {
         try {
         const authentication = getAuth();            
@@ -96,7 +58,6 @@ function Register() {
 		        <form className="bg-white">
 			        <h1 className="text-gray-800 font-bold text-2xl mb-1">Join our club</h1>
 			        <p className="text-sm font-normal text-gray-600 mb-7">Welcome to the deals</p>
-                    {/* Page reload so error message not visable? Move register button? */}
                     <p className="text-sm font-normal text-red-600 mb-7">{error}</p>
 					<div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
 						<svg xmlns="http://www.w3.org/2000/svg" 
@@ -115,9 +76,6 @@ function Register() {
                                name="" 
                                id="" 
                                placeholder="Email Address"
-                               //onChange={(event) => {
-                                //setNewEmail(event.target.value);
-                            //}} 
                                 onChange={(event) => {
                                     setRegisterEmail(event.target.value);
                                 }}
@@ -138,16 +96,12 @@ function Register() {
                                name="" 
                                id="" 
                                placeholder="Password"
-                               //onChange={(event) => {
-                                //setNewPassword(event.target.value);
-                            //}}
                                 onChange={(event) => {
                                     setRegisterPassword(event.target.value);
                                 }}
                             />
                     </div>
 					<button type="submit" 
-                            //onClick={createUser}
                             onClick={registerUser}
                             className="block w-full bg-sky-900 opacity-75 hover:opacity-100 text-white mt-4 py-2 rounded-2xl font-semibold mb-2">Register</button>
 						<span className="text-sm ml-2 hover:text-sky-500 cursor-pointer">

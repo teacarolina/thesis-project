@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
-import { collection, addDoc, doc, getDocs } from 'firebase/firestore/lite';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { collection, addDoc } from 'firebase/firestore/lite';
 import db from '../../FirebaseConfig';
 
 function Login() {
@@ -19,12 +19,11 @@ function Login() {
 
     const navigate = useNavigate();
 
-    //Explain and take away console log
-
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
     const [error, setError] = useState("");
 
+    //function to login user and authenticate it to firestore
     const loginUser = async () => {
         try {
         const authentication = getAuth();            
@@ -36,7 +35,6 @@ function Login() {
             createCart();
             navigate("/")
         } catch (error) {
-            console.log(error.message);
             setError(error.message);
         }
     }
@@ -54,11 +52,10 @@ function Login() {
                   </button>
               </div>
           </div>
-          <div className="flex md:w-1/2 justify-center py-10 items-center bg-white">
+          <div className="flex md:w-1/2 justify-center py-2 items-center bg-white grid grid-rows-2 grid-flow-col">
               <form className="bg-white">
                   <h1 className="text-gray-800 font-bold text-2xl mb-1">Hi friend!</h1>
                   <p className="text-sm font-normal text-gray-600 mb-7">Welcome back</p>
-                  {/* Page reload so error message not visable? Move register button? */}
                   <p className="text-sm font-normal text-red-600 mb-7">{error}</p>
                   <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
                       <svg xmlns="http://www.w3.org/2000/svg" 
@@ -102,14 +99,15 @@ function Login() {
                   </div>
                   {/* Submit Form 
                   Move this to outside of form for error messages */}
-                  <button type="submit" 
+                      <span className="text-sm ml-2 hover:text-sky-500 cursor-pointer">
+                          <Link to="/register">No account yet ?</Link>
+                      </span>
+              </form> 
+              <div className="flex justify-center py-10 items-center bg-white">
+          <button type="submit" 
                           onClick={loginUser}
                           className="block w-full bg-sky-900 opacity-75 hover:opacity-100 text-white hover:text-white mt-4 py-2 rounded-2xl font-semibold mb-2">Login</button>
-                      <span className="text-sm ml-2 hover:text-sky-500 cursor-pointer"><Link to="/register">No account yet ?</Link></span>
-              </form>
-              <button type="submit" 
-                          onClick={loginUser}
-                          className="block w-full bg-sky-900 opacity-75 hover:opacity-100 text-white hover:text-white mt-4 py-2 rounded-2xl font-semibold mb-2">Login</button>  
+          </div> 
           </div>
       </div>  
       </>

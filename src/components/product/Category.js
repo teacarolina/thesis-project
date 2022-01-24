@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../navbar/Navbar';
 import Footer from '../footer/Footer';
 import ProductCard from './ProductCard';
-import {useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import {firstLetterToUppercase} from '../../helper';
+import { firstLetterToUppercase } from '../../helper';
 import Header from '../header/Header';
 
 function Category() {
@@ -44,7 +44,6 @@ function Category() {
                                 fill="#648299" 
                                 fillRule="nonzero"/>
                     </svg>
-                    {/* Implement sorting by ASC or DESC of the results? */}
                     <select className="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none">
                         <option>Order by</option>
                         <option>ASC</option>
@@ -60,6 +59,7 @@ function Category() {
                             title={product.title}
                             price={product.price}
                             image={product.image}
+                            rating={product.rating.rate}
                         />
                         )
                     })}

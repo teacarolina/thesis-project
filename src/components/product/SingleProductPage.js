@@ -1,36 +1,32 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../navbar/Navbar';
 import Footer from '../footer/Footer';
-import {useParams, useNavigate} from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { collection, addDoc, doc, getDocs } from 'firebase/firestore/lite';
+import { collection, addDoc, getDocs } from 'firebase/firestore/lite';
 import db from '../../FirebaseConfig';
 import { getAuth } from "firebase/auth";
 
 function SingleProductPage() {
 
-    const [carts, setCarts] = useState([])
+    const [carts, setCarts] = useState([]);
+
+    //Using state to save the specific product
+    const [product, setProduct] = useState([]);
 
     useEffect(() => {
-        
         const carts = async()=>{
-            
             const data = await getDocs(cartCollectionRef);
-            setCarts(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+            setCarts(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
         }
-
-        carts()
+        carts();
     }, [])
 
-    console.log("carts", carts)
-
+    //add function to variable to be able to navigate to other pages
     const navigate = useNavigate();
 
     //Using useParams to get the value of the URL parameter
     const {id} = useParams();
-
-    //Using state to save the specific product
-    const [product, setProduct] = useState([]);
 
     //Using useEffect to fetch the specific products from the API 
     useEffect( () => {
@@ -53,16 +49,11 @@ function SingleProductPage() {
         if(!user) {
             navigate("/login");
         } else {
-            //????????????????????????????
-            //this cart id where user id is?
             const thisCartId = carts[0].id;
-            console.log(thisCartId)
-            localStorage.setItem("Cart Id", thisCartId)
+            localStorage.setItem("Cart Id", thisCartId);
             const thisProductId = Number({id}.id);
             await addDoc(cartItemsCollectionRef, {productId: thisProductId, cartId: thisCartId});
     }}
-
-    
 
     return (
         <>
@@ -72,7 +63,6 @@ function SingleProductPage() {
                 <div className="md:flex items-center -mx-10">
                     <div className="w-full md:w-1/2 px-10 mb-10 md:mb-0">
                         <div className="relative">
-                            {/* Explain + add alt image texts on all images */}
                             <img src={product.image}
                                  className="w-1/2 relative z-10" 
                                  alt=""/>
@@ -81,19 +71,25 @@ function SingleProductPage() {
                     </div>
                     <div className="w-full md:w-1/2 px-10">
                         <div className="mb-10">
-                            <h1 className="font-bold uppercase text-2xl mb-5">{product.title}</h1>
-                            <p className="text-sm">{product.description}</p>
+                            <h1 className="font-bold uppercase text-2xl mb-5">
+                                {product.title}
+                            </h1>
+                            <p className="text-sm">
+                                {product.description}
+                            </p>
                         </div>
                         <div>
                             <div className="inline-block align-bottom mr-5">
                                 <span className="text-2xl leading-none align-baseline">$</span>
-                                <span className="font-bold text-5xl leading-none align-baseline">{product.price}</span>
+                                <span className="font-bold text-5xl leading-none align-baseline">
+                                    {product.price}
+                                </span>
                             </div>
                             <div className="inline-block align-bottom">
                                 <button className="bg-sky-900 opacity-75 hover:opacity-100 text-white hover:text-white rounded-full px-10 py-2 font-semibold"
                                         onClick={addToCart}>
-                                    {/* Add icon? */}
-                                    <i className="mdi mdi-cart -ml-2 mr-2"></i> BUY NOW
+                                    <i className="mdi mdi-cart -ml-2 mr-2"></i> 
+                                    BUY NOW
                                 </button>
                             </div>
                         </div>

@@ -126,7 +126,8 @@ function Home() {
                     </div>
                 </div>
             </section>
-            {/*INSTAGRAM FEED*/}
+            {/*INSTAGRAM FEED
+            using react-ig-feed to display Instagram Feed*/}
             <InstagramFeed token="IGQVJXZAnhMc0VwWVVVdTVuX3dqVGRiMzNDdkJkMldXQzVhNlY0VGRLS25hdmpHQlF3bzlpMkR1WWVFZAXJTdkpVNVJXaF9fTElOaFBJR0FBcy01MUY1RHdzZAmRvU1k1OGV1M184WVhRYmx3TG5HUEpHZAgZDZD"
                            counter="6"/>  
         <Footer/>

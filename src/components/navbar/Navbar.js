@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
-import { collection, addDoc, doc, getDocs } from 'firebase/firestore/lite';
-
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { collection, getDocs } from 'firebase/firestore/lite';
 import db from '../../FirebaseConfig';
 
 function Navbar() {
@@ -10,29 +9,23 @@ function Navbar() {
     //to get current logged in user
     const authentication = getAuth();
 
-    //put this in useEffect so it's only rendering once? , []
     //to set a state which contains the current logged in user
     const [user, setUser] = useState({});
+
+    //firebase auth function to get the current logged in user
     onAuthStateChanged(authentication, (currentUser) => {
       setUser(currentUser);
-      console.log(currentUser)
     });
-    //this is written in return {user.email} or {user?.email}
-    //? sets it to if user exists write it out otherwise don't to avoid errors
 
-    const [cartItems, setCartItems] = useState([]);
-    const [cartItemProductIds, setCartItemProductIds] = useState([]);
+    //get the collection from db 
     const cartItemsCollectionRef = collection(db, 'cartItems');
 
+    //function that get the cart items and saves them in local storage to display them on cart page
     const setCart = async () => {
         const data = await getDocs(cartItemsCollectionRef);
-        console.log(data);
         const mapfunction = data.docs.map((doc) => ({...doc.data(), id: doc.id}))
-        console.log(mapfunction)
-        const test = mapfunction.map(index => [index.productId]);
-        
-        console.log(test)
-        localStorage.setItem("Cart Item Ids", JSON.stringify(test));
+        const cartItemIds = mapfunction.map(index => [index.productId]);        
+        localStorage.setItem("Cart Item Ids", JSON.stringify(cartItemIds));
     }
 
     return (
@@ -160,9 +153,6 @@ function Navbar() {
                                     strokeLinecap="round" 
                                     strokeLinejoin="round"/>
                             </svg>
-                            {/* Do I want to add this if something is in cart?
-                            <span className="absolute top-0 left-0 rounded-full bg-sky-900 text-white p-1 text-xs"></span>
-                            */}
                             </Link>
                         </p>
                     </div>
