@@ -52,7 +52,7 @@ function Login() {
                   </button>
               </div>
           </div>
-          <div className="flex md:w-1/2 justify-center py-2 items-center bg-white grid grid-rows-2 grid-flow-col">
+          <div className="flex md:w-1/2 justify-center py-2 pt-36 items-center bg-white grid grid-rows-2 grid-flow-col">
               <form className="bg-white">
                   <h1 className="text-gray-800 font-bold text-2xl mb-1">Hi friend!</h1>
                   <p className="text-sm font-normal text-gray-600 mb-7">Welcome back</p>
@@ -103,7 +103,7 @@ function Login() {
                           <Link to="/register">No account yet ?</Link>
                       </span>
               </form> 
-              <div className="flex justify-center py-10 items-center bg-white">
+              <div className="flex justify-center pb-24 items-center bg-white">
           <button type="submit" 
                           onClick={loginUser}
                           className="block w-full bg-sky-900 opacity-75 hover:opacity-100 text-white hover:text-white mt-4 py-2 rounded-2xl font-semibold mb-2">Login</button>

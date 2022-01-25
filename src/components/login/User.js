@@ -220,32 +220,32 @@ function User() {
                                         <div className="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none" aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                                             <div className="py-1">
                                             <span className="text-gray-400 text-sm inline-block pt-2 pl-4">
-                        Email address and password is required to delete user
-                    </span>
+                                                Email address and password is required to delete user
+                                            </span>
                                                 <p tabIndex="0" 
-                                                className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" 
-                                                role="menuitem">
+                                                   className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" 
+                                                   role="menuitem">
                                                 {/* Input: Email Address */}
                                                     <input className="border-2 w-full px-4 py-2 rounded-md text-md text-gray-700 outline-none"
-                                                            type="text" 
-                                                            name="" 
-                                                            id="" 
-                                                            placeholder="Email Address"
-                                                            onChange={(event) => {
-                                                                setCurrentEmail(event.target.value);
+                                                           type="text" 
+                                                           name="" 
+                                                           id="" 
+                                                           placeholder="Email Address"
+                                                           onChange={(event) => {
+                                                              setCurrentEmail(event.target.value);
                                                             }}     
                                                             />
                                                 </p>
                                                 <p tabIndex="0" 
-                                                className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" 
-                                                role="menuitem">
+                                                   className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" 
+                                                   role="menuitem">
                                                 {/* Input: Password */}
                                                     <input className="border-2 w-full px-4 py-2 rounded-md text-md text-gray-700 outline-none"
-                                                            type="password" 
-                                                            name="" 
-                                                            id="" 
-                                                            placeholder="Password"
-                                                            onChange={(event) => {
+                                                           type="password" 
+                                                           name="" 
+                                                           id="" 
+                                                           placeholder="Password"
+                                                           onChange={(event) => {
                                                                 setCurrentPassword(event.target.value);
                                                             }}     
                                                             />
