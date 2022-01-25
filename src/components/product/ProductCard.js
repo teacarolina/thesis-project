@@ -9,6 +9,7 @@ function ProductCard({ id, title, price, image, rating }) {
           <div className="relative max-w-[340px] min-w-[340px] max-h-[280px] min-h-[280px] bg-white shadow-md rounded-3xl p-2 mx-1 my-3 cursor-pointer">
             <div className="overflow-x-hidden rounded-2xl relative">
               <img className="h-40 rounded-2xl w-full object-cover" 
+                   alt="Product Image"
                    src={image}/>
             </div>
             <div className="mt-4 pl-2 mb-2">

@@ -15,7 +15,7 @@ function AboutUs() {
             <section className="relative pt-12 bg-blueGray-50">
                 <div className="items-center flex flex-wrap">
                     <div className="w-full md:w-4/12 ml-auto mr-auto px-4">
-                        <img alt="..." 
+                        <img alt="Wardrobe with clothes and paper bag" 
                              className="max-w-full rounded-lg shadow-lg mb-7" 
                              src="https://cdn.pixabay.com/photo/2019/02/21/11/18/shopping-4011117_1280.jpg"/>
                     </div>
@@ -121,7 +121,7 @@ function AboutUs() {
                         <div className="mb-8">
                             <img className="object-center object-cover rounded-full h-36 w-36" 
                                  src="https://cdn.pixabay.com/photo/2014/11/21/12/13/man-540500_1280.jpg" 
-                                 alt=""/>
+                                 alt="Employee Headshot"/>
                         </div>
                         <div className="text-center">
                             <p className="text-xl text-white font-bold mb-2">
@@ -136,7 +136,7 @@ function AboutUs() {
                         <div className="mb-8">
                             <img className="object-center object-cover rounded-full h-36 w-36" 
                                  src="https://cdn.pixabay.com/photo/2017/06/01/00/44/smiling-2362136_1280.jpg" 
-                                 alt="photo"/>
+                                 alt="Employee Headshot"/>
                         </div>
                         <div className="text-center">
                             <p className="text-xl text-white font-bold mb-2">
@@ -151,7 +151,7 @@ function AboutUs() {
                         <div className="mb-8">
                             <img className="object-center object-cover rounded-full h-36 w-36" 
                                  src="https://cdn.pixabay.com/photo/2021/03/10/16/39/woman-6084994_1280.jpg" 
-                                 alt="photo"/>
+                                 alt="Employee Headshot"/>
                         </div>
                         <div className="text-center">
                             <p className="text-xl text-white font-bold mb-2">
@@ -166,7 +166,7 @@ function AboutUs() {
                         <div className="mb-8">
                             <img className="object-center object-cover rounded-full h-36 w-36" 
                                  src="https://cdn.pixabay.com/photo/2015/09/12/11/39/employees-936804_1280.jpg" 
-                                 alt="photo"/>
+                                 alt="Employee Headshot"/>
                         </div>
                         <div className="text-center">
                             <p className="text-xl text-white font-bold mb-2">
@@ -181,7 +181,7 @@ function AboutUs() {
                         <div className="mb-8">
                             <img className="object-center object-cover rounded-full h-36 w-36" 
                                  src="https://cdn.pixabay.com/photo/2016/11/29/09/38/adult-1868750_1280.jpg" 
-                                 alt="photo"/>
+                                 alt="Employee Headshot"/>
                         </div>
                         <div className="text-center">
                             <p className="text-xl text-white font-bold mb-2">
@@ -196,7 +196,7 @@ function AboutUs() {
                         <div className="mb-8">
                             <img className="object-center object-cover rounded-full h-36 w-36" 
                                  src="https://cdn.pixabay.com/photo/2016/06/06/17/05/woman-1439909_1280.jpg" 
-                                 alt="photo"/>
+                                 alt="Employee Headshot"/>
                         </div>
                         <div className="text-center">
                             <p className="text-xl text-white font-bold mb-2">

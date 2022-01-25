@@ -105,7 +105,7 @@ function Cart() {
                                     return (<>
                                 <div className="col-span-1 self-center">
                                     <img src={product.data.image} 
-                                         alt="Product"   
+                                         alt="Product Image"   
                                          className="rounded w-1/2"/>
                                 </div>
                                 <div className="flex flex-col col-span-3 pt-2">

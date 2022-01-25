@@ -6,8 +6,11 @@ import axios from 'axios';
 import { collection, addDoc, getDocs } from 'firebase/firestore/lite';
 import db from '../../FirebaseConfig';
 import { getAuth } from "firebase/auth";
+import Modal from './Modal';
 
 function SingleProductPage() {
+
+    const [openModal, setOpenModal] = useState(false);
 
     const [carts, setCarts] = useState([]);
 
@@ -55,6 +58,10 @@ function SingleProductPage() {
             await addDoc(cartItemsCollectionRef, {productId: thisProductId, cartId: thisCartId});
     }}
 
+    function alertModal() {
+        setOpenModal(true);
+    }
+
     return (
         <>
         <Navbar/>
@@ -65,12 +72,13 @@ function SingleProductPage() {
                         <div className="relative">
                             <img src={product.image}
                                  className="w-1/2 relative z-10" 
-                                 alt=""/>
+                                 alt="Product Image"/>
                             <div className="border-4 border-sky-50 absolute top-10 bottom-10 left-10 right-10 z-0"></div>
                         </div>
                     </div>
                     <div className="w-full md:w-1/2 px-10">
                         <div className="mb-10">
+                            {openModal === true ? <Modal/> : <></>}
                             <h1 className="font-bold uppercase text-2xl mb-5">
                                 {product.title}
                             </h1>
@@ -87,7 +95,7 @@ function SingleProductPage() {
                             </div>
                             <div className="inline-block align-bottom">
                                 <button className="bg-sky-900 opacity-75 hover:opacity-100 text-white hover:text-white rounded-full px-10 py-2 font-semibold"
-                                        onClick={addToCart}>
+                                        onClick={function(event) {addToCart(); alertModal();}}>
                                     <i className="mdi mdi-cart -ml-2 mr-2"></i> 
                                     BUY NOW
                                 </button>

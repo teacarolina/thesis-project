@@ -12,7 +12,7 @@ function Footer() {
                     <div className="flex justify-center my-10">
                         <div className="flex flex-row space-x-4">
                             {/* Change to a Link */}
-                            <a href="#" 
+                            <a href="https://www.facebook.com/" 
                                className="text-gray-400 hover:text-gray-500">
                                 <span className="sr-only">Facebook</span>
                                 <svg className="w-6 h-6" 
@@ -26,7 +26,7 @@ function Footer() {
                                 </svg>
                             </a>
                             {/* Change to a Link */}
-                            <a href="#" 
+                            <a href="https://www.instagram.com/deal.se/" 
                                className="text-gray-400 hover:text-gray-500">
                                 <span className="sr-only">Instagram</span>
                                     <svg className="w-6 h-6" 
@@ -40,7 +40,7 @@ function Footer() {
                                     </svg>
                             </a>
                             {/* Change to a Link */}
-                            <a href="#" 
+                            <a href="https://twitter.com/" 
                                className="text-gray-400 hover:text-gray-500">
                                 <span className="sr-only">Twitter</span>
                                     <svg className="w-6 h-6" 

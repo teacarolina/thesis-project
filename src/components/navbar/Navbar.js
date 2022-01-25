@@ -153,6 +153,8 @@ function Navbar() {
                                     strokeLinecap="round" 
                                     strokeLinejoin="round"/>
                             </svg>
+                            <span className="absolute top-0 left-3 rounded-full bg-sky-900 text-white p-1 text-xs"></span>
+                            <span className="animate-ping absolute top-0 left-3 rounded-full bg-sky-900 text-white p-1 text-xs"></span>
                             </Link>
                         </p>
                     </div>
