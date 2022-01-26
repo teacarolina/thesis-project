@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { getAuth, onAuthStateChanged} from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { collection, doc, getDocs, query, where, deleteDoc } from 'firebase/firestore/lite';
 import db from '../../FirebaseConfig';
+import { useNavigate } from 'react-router-dom';
 
 function Success() {
+
+    const navigate = useNavigate();
 
     //to get current logged in user
     const authentication = getAuth();
 
     //to set a state which contains the current logged in user
     const [user, setUser] = useState({});
-    const [cartData, setCartData] = useState([])
 
     onAuthStateChanged(authentication, (currentUser) => {
       setUser(currentUser);
@@ -40,6 +41,14 @@ function Success() {
         deleteCart();
     }, [])
 
+    //log out function, signOut is from firebase auth 
+    const logout = async () => {
+        localStorage.clear();
+        const authentication = getAuth(); 
+        await signOut(authentication);
+        navigate("/login");
+    }
+
   return (
         <>
             <div className="bg-sky-900 h-screen pt-20">
@@ -59,8 +68,9 @@ function Success() {
                         <p>You can now chase more deals!</p>
                         <div className="py-10 text-center">
                             <button type="submit" 
+                                    onClick={logout}
                                     className="md:w-34 bg-sky-900 opacity-75 hover:opacity-100 text-white hover:text-white rounded-full px-10 py-2 font-semibold">
-                                <Link to={'/'}>GO BACK</Link>
+                                    GO BACK
                             </button>
                         </div>
                     </div>

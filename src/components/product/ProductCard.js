@@ -9,15 +9,15 @@ function ProductCard({ id, title, price, image, rating }) {
           <div className="relative max-w-[340px] min-w-[340px] max-h-[280px] min-h-[280px] bg-white shadow-md rounded-3xl p-2 mx-1 my-3 cursor-pointer">
             <div className="overflow-x-hidden rounded-2xl relative">
               <img className="h-40 rounded-2xl w-full object-cover" 
-                   alt="Product Image"
+                   alt="Product"
                    src={image}/>
             </div>
             <div className="mt-4 pl-2 mb-2">
             <div className="flex items-center justify-between">
-                  <div class="text-sm text-gray-600 font-light">
+                  <div className="text-sm text-gray-600 font-light">
                     Rating {rating}/5
                   </div>
-                  <div class="text-2xl text-red-600 font-bold">
+                  <div className="text-2xl text-red-600 font-bold">
                     ${price}
                   </div>
                 </div>

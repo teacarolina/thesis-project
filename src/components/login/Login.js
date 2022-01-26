@@ -71,8 +71,8 @@ function Login() {
                       {/* Input: Email Address */}
                       <input className="pl-2 outline-none border-none"
                              type="email" 
-                             name="" 
-                             id="" 
+                             name="email" 
+                             id="email" 
                              placeholder="Email Address"
                              onChange={(event) => {
                                 setLoginEmail(event.target.value);
@@ -90,8 +90,8 @@ function Login() {
                       {/* Input: Password */}
                       <input className="pl-2 outline-none border-none" 
                              type="password" 
-                             name="" 
-                             id="" 
+                             name="password" 
+                             id="password" 
                              placeholder="Password"
                              onChange={(event) => {
                                 setLoginPassword(event.target.value);

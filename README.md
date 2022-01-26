@@ -1,4 +1,6 @@
-# Introduction
+# Thesis Project
+
+## Introduction
 
 An e-commerce web application for selling products with user login. In this project I have used React, Stripe for payment, Firebase for database, Tailwindcss for Frontend css and Fake Store API for products database.
 
@@ -14,41 +16,28 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+In the stripe-server directory, you can run:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `node index`
 
-### `npm run build`
+Runs the Stripe server on http://localhost:4242.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The repository can be found here https://github.com/teacarolina/thesis-project-server.git.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Dependencies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+React ^17.0.2 https://reactjs.org/.
 
-### `npm run eject`
+Stripe ^8.198.0 https://stripe.com/docs.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Firebase ^9.6.1 https://firebase.google.com/docs.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Tailwind CSS https://tailwindcss.com/.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Fake Store API https://fakestoreapi.com/docs.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Instagram Feed Component https://www.npmjs.com/package/react-ig-feed.
 
-## Learn More
+## Requirements 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Requirements
-
-Stripe https://stripe.com/docs
-Firebase https://firebase.google.com/docs
-Tailwind CSS https://tailwindcss.com/
-Fake Store API https://fakestoreapi.com/docs
-Instagram Feed Component https://www.npmjs.com/package/react-ig-feed
+See package.json file.

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../navbar/Navbar';
 import Footer from '../footer/Footer';
-import { deleteUser, getAuth, onAuthStateChanged, signOut, updateProfile, reauthenticateWithCredential, EmailAuthProvider } from "firebase/auth";
-import { collection, getDocs, query, where } from 'firebase/firestore/lite';
+import { getAuth, onAuthStateChanged, signOut, updateProfile, reauthenticateWithCredential, EmailAuthProvider } from "firebase/auth";
+import { collection, getDocs, query, where, doc, deleteDoc } from 'firebase/firestore/lite';
 import db from '../../FirebaseConfig';
 import { useNavigate } from 'react-router-dom';
 
@@ -25,7 +25,7 @@ function User() {
     onAuthStateChanged(authentication, (currentUser) => {
       setUser(currentUser);
     });
-
+    
     //log out function, signOut is from firebase auth 
     const logout = async () => {
       const authentication = getAuth(); 
@@ -61,12 +61,16 @@ function User() {
     const [orderData, setOrderData] = useState([]);
 
     useEffect(()=>{
+        if(authentication.currentUser != null) {
+            const userUid = authentication.currentUser.uid;
+        
         const getOrders = async () => {
-            const data = await getDocs(query(ordersCollectionRef, where("userId", "==", user.uid)));
+            const data = await getDocs(query(ordersCollectionRef, where("userId", "==", userUid)));
             setOrderData(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
         }
         getOrders();
-    }, [])
+    }
+    }, [user])
 
     return (
         <>
@@ -163,8 +167,8 @@ function User() {
                                                 {/* Input: Customer Name */}
                                                     <input className="border-2 w-full px-4 py-2 rounded-md text-md text-gray-700 outline-none"
                                                             type="text" 
-                                                            name="" 
-                                                            id="" 
+                                                            name="customerName" 
+                                                            id="customerName" 
                                                             placeholder="Customer Name"
                                                             onChange={(event) => {
                                                                 setNewDisplayName(event.target.value);
@@ -228,8 +232,8 @@ function User() {
                                                 {/* Input: Email Address */}
                                                     <input className="border-2 w-full px-4 py-2 rounded-md text-md text-gray-700 outline-none"
                                                            type="text" 
-                                                           name="" 
-                                                           id="" 
+                                                           name="email" 
+                                                           id="email" 
                                                            placeholder="Email Address"
                                                            onChange={(event) => {
                                                               setCurrentEmail(event.target.value);
@@ -242,8 +246,8 @@ function User() {
                                                 {/* Input: Password */}
                                                     <input className="border-2 w-full px-4 py-2 rounded-md text-md text-gray-700 outline-none"
                                                            type="password" 
-                                                           name="" 
-                                                           id="" 
+                                                           name="password" 
+                                                           id="password" 
                                                            placeholder="Password"
                                                            onChange={(event) => {
                                                                 setCurrentPassword(event.target.value);
@@ -260,6 +264,7 @@ function User() {
                                     </div>
                                 </div>
                                 {/* End of Dropdown Menu */}
+                                <br/><span className="invisible">{user?.uid}</span>
                             </div>            
                         </ul>
                     <div className="flex justify-center">

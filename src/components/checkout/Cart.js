@@ -70,7 +70,7 @@ function Cart() {
         return previousValue + currentValue;
       })
       setCartSum(totalPrice);
-    }, [])
+    }, [cartSum])
   
     return (
         <>
@@ -116,15 +116,10 @@ function Cart() {
                                 <div className="col-span-2 pt-3">
                                     <div className="flex items-center space-x-2 text-sm justify-between">
                                         <div className="w-10 h-8">
-                                            <div className="relative flex flex-row w-full h-8">
-                                                <input type="number" 
-                                                       min="1" 
-                                                       max="10" 
-                                                       className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black" />
-                                            </div>
                                         </div>
                                         <span className="text-green-400 font-semibold inline-block">
                                             ${product.data.price}
+                                            <span className="invisible">key={product.data.id}</span>
                                         </span>
                                         <button>
                                             <svg className="w-4 h-4" 

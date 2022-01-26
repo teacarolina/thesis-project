@@ -127,7 +127,7 @@ function ContactForm() {
                                         onSubmit={sendEmail}>
                                         {/* Input: Full Name */}
                                         <div className="flex flex-col">
-                                            <label for="name" 
+                                            <label htmlFor="name" 
                                                    className="hidden">Full Name</label>
                                             <input type="name" 
                                                    name="name" 
@@ -137,7 +137,7 @@ function ContactForm() {
                                         </div>
                                         {/* Input: Email */}
                                         <div className="flex flex-col mt-2">
-                                            <label for="email" 
+                                            <label htmlFor="email" 
                                                    className="hidden">Email</label>
                                             <input type="email" 
                                                    name="email" 
@@ -147,7 +147,7 @@ function ContactForm() {
                                         </div>
                                         {/* Input: Message */}
                                         <div className="flex flex-col mt-2">
-                                            <label for="message" 
+                                            <label htmlFor="message" 
                                                    className="hidden">Message</label>
                                             <input type="text" 
                                                    name="message" 

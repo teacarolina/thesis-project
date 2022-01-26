@@ -35,7 +35,6 @@ function SingleProductPage() {
     useEffect( () => {
         const fetchProduct = async()=> {
             const response = await axios.get(`https://fakestoreapi.com/products/${id}`);
-            console.log(response.data);     
             setProduct(response.data);
         }
         fetchProduct();
@@ -72,7 +71,7 @@ function SingleProductPage() {
                         <div className="relative">
                             <img src={product.image}
                                  className="w-1/2 relative z-10" 
-                                 alt="Product Image"/>
+                                 alt="Product"/>
                             <div className="border-4 border-sky-50 absolute top-10 bottom-10 left-10 right-10 z-0"></div>
                         </div>
                     </div>
